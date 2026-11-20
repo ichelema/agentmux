@@ -19,7 +19,7 @@ See `docs/specs/SESSION_CONTINUITY.md` for exact handoff contract.
 
 - Work on one approved atomic issue at a time and only in its authorized worktree: branch `<prefix>/<issue-id>-<model>`, worktree `<repo-root>/.claude/worktrees/<prefix>+<issue-id>-<model>` (`docs/DEVELOPMENT_WORKFLOW.md` §1).
 - No unauthorized scope expansion, architecture/security/permission changes, secret access, destructive operations, CI bypass, direct push to protected main, or agent merge. Single exception: a direct commit to `main` that contains only `RIPRESA.md`, with the message `docs(ripresa): ...` (`docs/DEVELOPMENT_WORKFLOW.md` §1). M0-06 must keep this exception compatible with the branch protection it configures, or revisit it.
-- Independent reviewer: a read-only subagent with separate context, launched by the orchestrator (`3_independent-review` or `4_review-fix-loop`, mode chosen by the owner) on a detached review worktree `review+<base-name>`; read-only is procedural, not enforced. Max three ordinary review cycles in total.
+- Independent reviewer: a read-only subagent with separate context on a detached review worktree, launched with the command the owner chooses: `3_independent-review … soft`, `4_review-fix-loop` or `issue-cycle review|loop` (`docs/DEVELOPMENT_WORKFLOW.md` §4). `3_independent-review` in `hard` mode in the implementer session is not independent. Read-only is procedural, not enforced. Max three ordinary review cycles in total.
 - Critical/High unresolved findings block merge. Human controls approval and merge.
 - Document/recover consequential state at milestones and interruptions. A new context must verify current source state rather than blindly trust a summary.
 - Do not retain credentials or complete conversations in Hindsight or handoffs.
