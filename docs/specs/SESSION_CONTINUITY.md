@@ -1,6 +1,6 @@
 # Session continuity and resumable agent execution
 
-**Status:** part of `governance 2.10-draft`; operational specification exercised in the pilot ICH-548, not yet automated. This protocol is mandatory for starting a new agent session.
+**Status:** part of `governance 2.10-draft`; operational specification exercised in the pilot ICH-548, not yet automated. This protocol is mandatory for starting a new agent session. An independent reviewer follows `docs/DEVELOPMENT_WORKFLOW.md` §4 instead: it does not read checkpoint comments (step 4).
 
 ## What survives between sessions
 
@@ -17,7 +17,7 @@ Do **not** assume ChatGPT/agent conversational memory, hidden chain of thought, 
 1. Determine issue ID from explicit user instruction or approved Linear execution slot. If ambiguous, stop. Do not select the next backlog issue autonomously.
 2. Read `CLAUDE.md`, relevant workflow and architecture sections. Read spec revision and separately approved plan revision from Linear; confirm governance version pinned at start.
 3. Verify actual repository and worktree: location, branch, `HEAD`, `git status`, untracked/uncommitted work, remote divergence, outstanding cherry-pick/rebase/merge. Verify issue/branch linkage.
-4. Read last checkpoint and PR/CI state, and cross-check it against actual Git and Linear. Treat mismatches as potential recovery blockers; do not overwrite newer work.
+4. Read last checkpoint and PR/CI state, and cross-check it against actual Git and Linear. Treat mismatches as potential recovery blockers; do not overwrite newer work. An independent reviewer reads only the PR/CI state, not the checkpoint.
 5. Load relevant ADR/contracts/test scope; make targeted Hindsight `recall` queries based on issue/component. Verify retrieved facts against source.
 6. Determine exact checkpoint (CP01–CP06), consumed correction/review counts and permitted next action. Check whether previous side-effect operations already happened before retrying.
 7. Produce short resume assessment: verified state; remaining AC/finding; next operation; pending human gate. Execute only if all required approvals and safety checks hold.

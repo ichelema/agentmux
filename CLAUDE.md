@@ -10,7 +10,7 @@ Read `docs/DEVELOPMENT_WORKFLOW.md`, `docs/ARCHITECTURE.md`, `docs/specs/SESSION
 2. Read the latest approved specification and plan; capture their revision identifiers and the applicable governance version.
 3. Verify `git status`, active branch, HEAD commit, worktree path, and relevant remote/PR status. Check actual Git state rather than trusting a handoff.
 4. Load only the relevant ADRs/specs/tests and retrieve targeted Hindsight knowledge for the affected components (if available). Verify memories against source of truth.
-5. Read the last checkpoint/handoff from Linear/PR and compare every claim with Git, CI and issue status. Check unfinished operations before retrying.
+5. Read the last checkpoint/handoff from Linear/PR and compare every claim with Git, CI and issue status. Check unfinished operations before retrying. An independent reviewer skips this step: it does not read checkpoint comments (`docs/DEVELOPMENT_WORKFLOW.md` §4).
 6. State resumable next action or blocker. Do not start a second active issue: WIP=1.
 
 See `docs/specs/SESSION_CONTINUITY.md` for exact handoff contract.
