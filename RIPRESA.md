@@ -18,9 +18,9 @@
   libero. L'utente ha già scelto M0-02 come issue successiva (2026-11-20). Cosa fa la nuova sessione:
   1. esegue «Prima di iniziare» qui sotto e controlla che su Linear nessuna issue di Agentmux sia In Progress e che
      M0-02 non esista già; se esiste, non la crea di nuovo e riparte dal suo stato;
-  2. lancia lei stessa il command `trinity:workflow:0_create-issue` (tool Skill) con la descrizione qui sotto;
-  3. si ferma al gate CP01: mostra all'utente la spec della nuova issue e chiede l'approvazione. Niente piano,
-     worktree o codice prima dell'approvazione.
+  2. propone all'utente il command qui sotto in un blocco di codice e si ferma: lo invoca l'utente (regola 10);
+  3. dopo il command si ferma al gate CP01: mostra all'utente la spec della nuova issue e chiede l'approvazione.
+     Niente piano, worktree o codice prima dell'approvazione.
 
   ```text
   /trinity:workflow:0_create-issue M0-02 Development Governance for project Agentmux (BOOTSTRAP_PLAN): track in the repository the seed governance documents (CLAUDE.md, docs/DEVELOPMENT_WORKFLOW.md, docs/specs/SESSION_CONTINUITY.md, .github/pull_request_template.md), aligned to the owner decision on ICH-557 (Trinity conventions for branch, worktree and review prevail), and resolve ICH-558 and ICH-559 in the same documents. Add .claude/worktrees/ to .gitignore. Use the AgentMux specification template (DEVELOPMENT_WORKFLOW "Specification template"). Spec and plan need owner approval before any implementation.
@@ -72,12 +72,28 @@
    a contesto quasi pieno e su un blocco.
 9. Nel checkout principale restano file seed non tracciati: dopo un merge che li aggiunge a `main`, il fast-forward
    fallisce finché l'utente non sposta le copie. Non usare `git pull` e non forzare.
+10. I command del workflow (`0_create-issue` … `5_remove-worktree`, `issue-cycle`) li invoca l'utente (scelta
+    dell'utente del 2026-11-20). A fine fase l'agente scrive il prossimo command, con gli argomenti reali, in un
+    blocco di codice, e si ferma. Non lancia i command con il tool Skill e non li esegue leggendo il file del command.
 
 ## Procedura per ogni issue
 
+`<model>` è il modello scelto dall'utente; `<ICH-XXX>` è la issue attiva. L'utente invoca ogni command (regola 10).
+
+```text
+/trinity:workflow:0_create-issue <descrizione>
+/trinity:workflow:1_create-worktree main <ICH-XXX> <model>
+/trinity:workflow:2_work-issue <ICH-XXX> <model>
+/trinity:workflow:3_independent-review <ICH-XXX> <model>
+/trinity:workflow:4_review-fix-loop <ICH-XXX> <model>
+/trinity:workflow:5_remove-worktree <prefisso>+<ICH-XXX>-<model>
+```
+
+0. Prima di ogni command spiega in breve cosa farà e perché, poi proponi il command in un blocco di codice.
 1. `0_create-issue`, poi spec approvata (CP01) e piano approvato (CP02).
-2. `1_create-worktree`, implementazione (`2_work-issue`), PR.
-3. Review: `issue-cycle review` (un reviewer) o `loop` (due reviewer); la sceglie l'utente.
+2. `1_create-worktree`, poi `2_work-issue`: implementazione e PR.
+3. Review: `3_independent-review` (un reviewer) o `4_review-fix-loop` (due reviewer in parallelo, loop di fix); la
+   sceglie l'utente.
 4. Merge dell'utente. Dopo il merge l'issue può già essere Done per l'automazione (ICH-558): controlla lo stato.
 5. Chiusura: verifica `main`, registra lo SHA del merge, `5_remove-worktree`, commento di chiusura sulla issue.
 
