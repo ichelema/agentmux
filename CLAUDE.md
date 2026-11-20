@@ -2,7 +2,7 @@
 
 Read `docs/DEVELOPMENT_WORKFLOW.md`, `docs/ARCHITECTURE.md`, `docs/specs/SESSION_CONTINUITY.md` and the active approved Linear issue before doing work. Repository documents and signed-off ADRs define architecture; Linear contains approved issue specification and plan; Git is ground truth for code. Hindsight is advisory technical memory, never a substitute for these sources.
 
-**Status:** this seed is `2.9-draft`, **not** a frozen or approved bootstrap. Before any implementation, verify human approval of specification, plan, credentials/permissions and workflow phase. Do not infer authorization from file presence.
+**Status:** governance `2.10-draft`, tracked in the repository, **not** frozen. Before any implementation, verify human approval of specification, plan, credentials/permissions and workflow phase. Do not infer authorization from file presence.
 
 ## At session start (mandatory)
 

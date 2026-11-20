@@ -1,6 +1,6 @@
 # Session continuity and resumable agent execution
 
-**Status:** approved concept, proposed operational specification; not yet automated or proven. This protocol is mandatory for starting a new agent session once the human approves the bootstrap.
+**Status:** part of `governance 2.10-draft`; operational specification exercised in the pilot ICH-548, not yet automated. This protocol is mandatory for starting a new agent session.
 
 ## What survives between sessions
 
@@ -33,7 +33,7 @@ schema: agentmux.handoff.v1
 issue: ICH-XXX
 checkpoint: CP03
 phase: implementation
-governance_version: 2.9-draft
+governance_version: 2.10-draft
 spec_revision: "<approved-revision-id>"
 plan_revision: "<approved-revision-id>"
 branch: improvments/ICH-XXX-opus

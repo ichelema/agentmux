@@ -1,6 +1,6 @@
 # AgentMux Development Workflow
 
-**Status:** `governance 2.9-draft` — consolidated candidate for Controlled Pilot, not yet frozen. Intended first stable governance release: `1.0.0`, after pilot and explicit human approval. This document describes **policy**, not proof that automated protections already exist.
+**Status:** `governance 2.10-draft` — tracked in the repository since ICH-566 (M0-02), after the Controlled Pilot ICH-548; not yet frozen. Intended first stable governance release: `1.0.0`, after explicit human approval. This document describes **policy**, not proof that automated protections already exist.
 
 ## 1. Authority, state and non-negotiable invariants
 
@@ -95,11 +95,11 @@ Product C17; CMake/Ninja; pinned Clang primary and GCC secondary; clang-tidy, CT
 
 ## 11. Bootstrap and pilot
 
-M0 staged: administrative repo/Linear provisioning, development governance, architecture baseline, C17 skeleton, test infrastructure, CI. No PTY, libghostty-vt, Notcurses or SSH implementation in M0. See `docs/BOOTSTRAP_PLAN.md`. Pilot uses a minimal real Atomic issue, human-approved spec/plan, worktree, independent review, PR, human merge and post-merge verification. Consolidate and fix policy contradictions before governance freeze. Pilot not yet executed, no approval implied.
+M0 staged: administrative repo/Linear provisioning, development governance, architecture baseline, C17 skeleton, test infrastructure, CI. No PTY, libghostty-vt, Notcurses or SSH implementation in M0. See `docs/BOOTSTRAP_PLAN.md`. Pilot uses a minimal real Atomic issue, human-approved spec/plan, worktree, independent review, PR, human merge and post-merge verification. Consolidate and fix policy contradictions before governance freeze. The pilot ran in ICH-548 (M0-01); ICH-566 (M0-02) resolved the governance conflicts it found (ICH-557, ICH-558, ICH-559). The freeze `1.0.0` still needs explicit owner sign-off.
 
 ## 12. Governance versions and changes
 
-Draft series `2.9-draft` is a planning identifier, **not** SemVer 2.9 of frozen governance. After pilot + human approval, freeze first governance `1.0.0`; this version is independent of AgentMux product version and IPC version. Stable governance: PATCH for editorial clarification without changed obligations; MINOR for compatible new controls; MAJOR for fundamental gate/permission/workflow changes.
+Draft identifiers such as `2.10-draft` are planning identifiers, **not** SemVer of frozen governance; each draft identifier names one text, because issues pin it. After pilot + human approval, freeze first governance `1.0.0`; this version is independent of AgentMux product version and IPC version. Stable governance: PATCH for editorial clarification without changed obligations; MINOR for compatible new controls; MAJOR for fundamental gate/permission/workflow changes.
 
 All normative changes: separate `ICH-XXX` issue/proposal, impact analysis, approved scope/plan, authorized worktree and PR, independent review, human approval/merge, proportionate validation (editorial consistency, targeted control test, or focused/full pilot for structural change). `main` is normative after merge. Existing active issues remain pinned to their approved governance version absent explicit human migration; urgent security protection requires explicit decision. No automatic changes to enforcement that safeguards the same PR.
 
