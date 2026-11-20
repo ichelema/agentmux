@@ -15,7 +15,12 @@
   - ICH-558: l'automazione GitHub → Linear porta la issue a Done al merge, prima della chiusura CP06.
   - ICH-559: il reviewer legge i checkpoint dell'implementer nei commenti della issue.
 - **Prossimo step: creare la issue M0-02 «Development Governance».** Nessuna issue è In Progress: lo slot WIP è
-  libero. Lancia:
+  libero. L'utente ha già scelto M0-02 come issue successiva (2026-11-20). Cosa fa la nuova sessione:
+  1. esegue «Prima di iniziare» qui sotto e controlla che su Linear nessuna issue di Agentmux sia In Progress e che
+     M0-02 non esista già; se esiste, non la crea di nuovo e riparte dal suo stato;
+  2. lancia lei stessa il command `trinity:workflow:0_create-issue` (tool Skill) con la descrizione qui sotto;
+  3. si ferma al gate CP01: mostra all'utente la spec della nuova issue e chiede l'approvazione. Niente piano,
+     worktree o codice prima dell'approvazione.
 
   ```text
   /trinity:workflow:0_create-issue M0-02 Development Governance for project Agentmux (BOOTSTRAP_PLAN): track in the repository the seed governance documents (CLAUDE.md, docs/DEVELOPMENT_WORKFLOW.md, docs/specs/SESSION_CONTINUITY.md, .github/pull_request_template.md), aligned to the owner decision on ICH-557 (Trinity conventions for branch, worktree and review prevail), and resolve ICH-558 and ICH-559 in the same documents. Add .claude/worktrees/ to .gitignore. Use the AgentMux specification template (DEVELOPMENT_WORKFLOW "Specification template"). Spec and plan need owner approval before any implementation.
