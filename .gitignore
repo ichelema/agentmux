@@ -1,0 +1,19 @@
+# CMake and build artifacts
+build/
+cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+compile_commands.json
+Testing/
+
+# Local transient workflow / sensitive state
+.agentmux-local/
+.env
+.env.*
+*.log
+
+# Editors and platform
+.vscode/
+.idea/
+*.swp
+.DS_Store
