@@ -36,8 +36,8 @@ phase: implementation
 governance_version: 2.9-draft
 spec_revision: "<approved-revision-id>"
 plan_revision: "<approved-revision-id>"
-branch: feat/ICH-XXX-short-title
-worktree: "<verified-path>"
+branch: improvments/ICH-XXX-opus
+worktree: "<repo-root>/.claude/worktrees/improvments+ICH-XXX-opus"
 head_commit: "<full-git-sha>"
 worktree_clean: false
 pr: "<url-or-null>"

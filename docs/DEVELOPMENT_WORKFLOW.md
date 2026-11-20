@@ -7,7 +7,7 @@
 Human owner approves specifications, lightweight plans, architecture/permission/scope changes, exceptional deferrals, governance revisions and merges. AI may implement, test, commit and prepare PRs only inside authorized bounds. Git repository is authoritative for code, architecture documents, ADRs and governance. Linear is authoritative for issue-specific approved specification, approved plan, approvals, status, dependencies and human decisions. GitHub provides PR/change/CI evidence. Hindsight is advisory knowledge, never normative.
 
 - One active execution slot (WIP=1), including remediation/review/integration. Future issues may be specified; exceptions require human-approved suspension and explicit reassignment.
-- One worktree and matching `feat/ICH-XXX-...` branch per issue. Never trust a handoff instead of verifying real Git state.
+- One worktree and matching branch per issue, created by the Trinity command `1_create-worktree`: branch `<prefix>/<base-name>` and worktree `<repo-root>/.claude/worktrees/<prefix>+<base-name>`, where `<prefix>` is `bug` or `improvments` (from the issue type or label) and `<base-name>` is `<issue-id>-<model>`. Never trust a handoff instead of verifying real Git state.
 - No autonomous merge, direct protected-branch push, force push, unauthorized destructive changes, secret reads, privilege escalation or policy/CI bypass.
 - All work must be traceable: Linear issue → approved spec/plan revisions → branch/worktree → commits/PR → review → human merge → post-merge CI → Linear completion.
 - Independent review operates with separate context and code read-only permissions; max three normal review cycles across an issue, not three per agent restart.

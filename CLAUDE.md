@@ -17,7 +17,7 @@ See `docs/specs/SESSION_CONTINUITY.md` for exact handoff contract.
 
 ## Hard constraints
 
-- Work on one approved atomic issue at a time and only in its authorized worktree.
+- Work on one approved atomic issue at a time and only in its authorized worktree: branch `<prefix>/<issue-id>-<model>`, worktree `<repo-root>/.claude/worktrees/<prefix>+<issue-id>-<model>` (`docs/DEVELOPMENT_WORKFLOW.md` §1).
 - No unauthorized scope expansion, architecture/security/permission changes, secret access, destructive operations, CI bypass, direct push to protected main, or agent merge.
 - Independent reviewer: separate context and read-only code access, max three ordinary review cycles in total.
 - Critical/High unresolved findings block merge. Human controls approval and merge.
