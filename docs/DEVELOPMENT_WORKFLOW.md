@@ -41,6 +41,10 @@ Objective; References; Scope; Out of Scope; Preconditions; Expected Behavior; Er
 
 Five required sections: (1) Approach, (2) affected files/modules, (3) verification plan mapped to AC, (4) risks, (5) architectural impact A0/A1/A2 plus dependencies. Plan approved separately after specification. Do not silently replan.
 
+### Revision and approval records
+
+A label `spec-rN` / `plan-rN` in the header of a specification or plan identifies its revision; each changed revision gets the next label. The human owner approves in the agent session. The agent records each approval as a comment on the issue, marked "written by Claude Code on the owner's instruction", with the decision and the date; the owner is not required to write approval comments. A draft implies no approval.
+
 ### Definition of Done
 
 Approved AC satisfied; risk-adapted quality checks pass; review independent and no unresolved blocking findings; human-approved PR merged. After merge, verify `main` CI and clean the worktree, then post a closure comment on the issue. The closure comment records the merge SHA, the post-merge check of `main`, the worktree removal and the slot release; it is the authoritative CP06 evidence and the slot-release signal. The Linear state Done alone does not prove closure. The owner configures the Linear GitHub integration to move an issue to In Review at merge; the agent moves the issue to Done after the closure comment. No redundant final report.
