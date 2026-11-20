@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|clear",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "f=\"$CLAUDE_PROJECT_DIR/RIPRESA.md\"; if [ -f \"$f\" ]; then echo 'Prompt di ripresa del progetto AgentMux, caricato in automatico dal file RIPRESA.md. Se il primo messaggio chiede di riprendere o continuare il lavoro (per esempio: riprendi, continua, vai), esegui questo prompt. Se il messaggio chiede altro, segui quella richiesta.'; echo; cat \"$f\"; fi; exit 0"
+          }
+        ]
+      }
+    ]
+  }
+}
