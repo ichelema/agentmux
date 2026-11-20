@@ -1,7 +1,7 @@
 # RIPRESA — prompt per la prossima sessione
 
-> Avvio: incolla questo file nella nuova sessione di Claude Code, oppure scrivi «Leggi RIPRESA.md ed esegui il
-> prompt». Scritto il 2026-11-20 su Linux, dopo la chiusura del pilota M0-01 (ICH-548, merge `9de59ec`). Il lavoro da
+> Avvio: l'hook `SessionStart` di `.claude/settings.json` carica questo file nel contesto a ogni avvio e dopo
+> `/clear`: basta scrivere «riprendi». Senza hook: «Leggi RIPRESA.md ed esegui il prompt». Scritto il 2026-11-20 su Linux, dopo la chiusura del pilota M0-01 (ICH-548, merge `9de59ec`). Il lavoro da
 > fare è il **bootstrap M0** di `docs/BOOTSTRAP_PLAN.md`, una issue alla volta, con il workflow di Trinity.
 
 ## Stato e prossimo step (aggiornato il 2026-11-20, nessuna issue in corso)
@@ -39,6 +39,7 @@
   `docs/specs/SESSION_CONTINUITY.md`, `docs/ARCHITECTURE.md`, `docs/BOOTSTRAP_PLAN.md`, `docs/adr/`.
 - Questi documenti sono ancora **file seed non tracciati** nel checkout principale (`CLAUDE.md`, `docs/`, `.github/`,
   `.mcp.json`, `.claude/`). Entrano in Git con M0-02 e M0-03, non prima e non fuori da una issue approvata.
+  `.claude/settings.json` (hook di avvio che carica questo file, creato il 2026-11-20) va incluso in M0-02.
 - Linear: team ICH, progetto **Agentmux** (label di progetto `lang:en`). GitHub: `ichelema/agentmux`, pubblico,
   `main` senza protezione e senza CI (arriva con M0-06).
 - Le copie seed di `README.md` e `.gitignore` sono in `~/.claude/tmp/agentmux-seed-bak/`; il `README.md` seed ha la
