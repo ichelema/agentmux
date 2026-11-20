@@ -10,7 +10,7 @@ Human owner approves specifications, lightweight plans, architecture/permission/
 - One worktree and matching branch per issue, created by the Trinity command `1_create-worktree`: branch `<prefix>/<base-name>` and worktree `<repo-root>/.claude/worktrees/<prefix>+<base-name>`, where `<prefix>` is `bug` or `improvments` (from the issue type or label) and `<base-name>` is `<issue-id>-<model>`. Never trust a handoff instead of verifying real Git state.
 - No autonomous merge, direct protected-branch push, force push, unauthorized destructive changes, secret reads, privilege escalation or policy/CI bypass.
 - All work must be traceable: Linear issue → approved spec/plan revisions → branch/worktree → commits/PR → review → human merge → post-merge CI → Linear completion.
-- Independent review operates with separate context and code read-only permissions; max three normal review cycles across an issue, not three per agent restart.
+- Independent review runs as a read-only reviewer subagent with separate context, launched by the orchestrator on a detached review worktree (§4); max three normal review cycles across an issue, not three per agent restart.
 - Critical/High findings block merge; Medium/Low residual issues require explicit human-approved deferral into linked Linear issues.
 
 ## 2. Delivery lifecycle and gates
@@ -57,7 +57,7 @@ Approved AC satisfied; risk-adapted quality checks pass; review independent and 
 
 **Implementer:** source modification, build/tests, limited remediation, PR preparation, issue progress updates within authorized worktree. Cannot sign off own review or merge.
 
-**Independent Reviewer:** separate session/context, reads approved specification, applicable ADRs, exact commit/diff, CI evidence and independently retrieved relevant Hindsight. Must not receive implementer conversation, modify production code or rely on implementer test claims without examination. Report stable finding ID, severity, location, problem, evidence, expected behavior and status. `No Findings` is valid only after full review.
+**Independent Reviewer:** separate session/context. The orchestrator launches the reviewer as a read-only subagent with the Trinity command `3_independent-review` (mode `review`, one reviewer) or `4_review-fix-loop` (mode `loop`, two parallel reviewers); the owner chooses the mode, and `issue-cycle` runs the same modes. Each reviewer works on a detached worktree `<repo-root>/.claude/worktrees/review+<base-name>` at the PR head SHA, which the orchestrator removes after the review. A subagent launched this way satisfies the separate session/context requirement; the owner does not start a reviewer session by hand. Read-only is a procedure, not a technical control: the reviewer has shell access. The reviewer reads approved specification, applicable ADRs, exact commit/diff, CI evidence and independently retrieved relevant Hindsight. Must not receive implementer conversation, modify production code or rely on implementer test claims without examination. Report stable finding ID, severity, location, problem, evidence, expected behavior and status. `No Findings` is valid only after full review.
 
 Each review cycle is a complete assessment of a particular commit. Corrections trigger further review; total 3 ordinary cycles. After the limit, stop/escalate. A newly modified commit must not be merged without independent validation even if review budget exhausted: explicit human exception/decision required; agent must not silently start cycle 4.
 
