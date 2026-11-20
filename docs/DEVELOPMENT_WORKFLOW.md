@@ -22,7 +22,7 @@ Human owner approves specifications, lightweight plans, architecture/permission/
 | CP03 Implementation | Assigned agent works only in authorized worktree, implements AC, provides tests/build evidence |
 | CP04 Independent Review | Separate reviewer validates code against spec, applicable ADRs, risk, security and test coverage; max 3 cycles |
 | CP05 PR Ready | Required CI and review checks pass, findings handled, human sees scope/evidence |
-| CP06 Merge + Closure | Human authorizes and executes merge; `main` CI verified; Linear updated; slot released and worktree cleaned safely |
+| CP06 Merge + Closure | Human authorizes and executes merge; `main` CI verified; worktree cleaned safely; closure comment on the issue (Definition of Done) records the closure and releases the slot; then the agent moves the issue to Done |
 
 Do not report every shell command. Report milestone gates and blockers, conflicts, permission/architecture/security exceptions. After an interrupted session, resume from last verified checkpoint; never infer a successful merge or test from a conversational summary.
 
@@ -43,7 +43,7 @@ Five required sections: (1) Approach, (2) affected files/modules, (3) verificati
 
 ### Definition of Done
 
-Approved AC satisfied; risk-adapted quality checks pass; review independent and no unresolved blocking findings; human-approved PR merged. After merge, verify `main` CI, update Linear and clean worktree to close operational state/release WIP. No redundant final report.
+Approved AC satisfied; risk-adapted quality checks pass; review independent and no unresolved blocking findings; human-approved PR merged. After merge, verify `main` CI and clean the worktree, then post a closure comment on the issue. The closure comment records the merge SHA, the post-merge check of `main`, the worktree removal and the slot release; it is the authoritative CP06 evidence and the slot-release signal. The Linear state Done alone does not prove closure. The owner configures the Linear GitHub integration to move an issue to In Review at merge; the agent moves the issue to Done after the closure comment. No redundant final report.
 
 ## 3. Architecture and decision changes
 
@@ -83,7 +83,7 @@ Canonical docs: `docs/VISION.md` (vision), `docs/REQUIREMENTS.md` (requirements)
 
 ## 9. WIP, slots and enforcement
 
-Use a technically atomic execution-slot mechanism when available; checking worktrees alone is inadequate. Slot is held through implementation, review, merge and post-merge verification. An authorized suspension can release/reassign it; ensure at most one active workstream. State registry, if implemented, is operational only; reconcile with Linear and Git. Verify issue/branch identity and reviewed commit matches PR HEAD. Protected GitHub branch/rulesets should require PR + CI, prevent agent direct push/merge/force push and protect CI configuration; human decisions cannot be replaced by a CI heuristic. Enforcement scripts and CI checks are *planned*, not claimed installed. Bootstrapping these controls requires human-authorized administrative setup.
+Use a technically atomic execution-slot mechanism when available; checking worktrees alone is inadequate. Slot is held through implementation, review, merge and post-merge verification, and is released only by the CP06 closure comment (§2), never by a Linear state change alone. An authorized suspension can release/reassign it; ensure at most one active workstream. State registry, if implemented, is operational only; reconcile with Linear and Git. Verify issue/branch identity and reviewed commit matches PR HEAD. Protected GitHub branch/rulesets should require PR + CI, prevent agent direct push/merge/force push and protect CI configuration; human decisions cannot be replaced by a CI heuristic. Enforcement scripts and CI checks are *planned*, not claimed installed. Bootstrapping these controls requires human-authorized administrative setup.
 
 ## 10. CI, dependencies and releases
 
