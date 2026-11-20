@@ -24,7 +24,7 @@ Do **not** assume ChatGPT/agent conversational memory, hidden chain of thought, 
 
 ## End-of-session / interruption checkpoint
 
-Record when: checkpoint reached, session about to end, context saturation, tool error requiring replacement, blocker or review handoff. Prefer an issue comment/structured status in Linear, linked to commit and PR. Optionally use an ephemeral local handoff for convenience, never as the only copy.
+Record when: checkpoint reached, session about to end, context saturation, tool error requiring replacement, blocker or review handoff. Prefer an issue comment/structured status in Linear, linked to commit and PR. The first line of each implementer checkpoint comment is exactly `**Implementer checkpoint (agentmux.handoff.v1) — reviewers do not read this comment.**`; reviewers skip every comment that starts with this marker line. Optionally use an ephemeral local handoff for convenience, never as the only copy.
 
 Minimum record:
 
@@ -67,7 +67,7 @@ Values are **illustrative**. Do not report checks as passed unless measured, and
 - Keep review finding IDs and cycle counter stable across agent restarts; keep recovery counters tied to root cause.
 - Verification must precede execution when the last handoff may be stale.
 - If prior agent disappeared mid-mutation (PR creation, Linear edit), inspect remote state to avoid duplicates.
-- A reviewer starts from a **separate** clean context and independently reads the canonical spec, diff, test evidence and Hindsight (if available); it must not receive implementer's conversational scratchpad.
+- A reviewer starts from a **separate** clean context and independently reads the canonical spec, approved plan, approval records, diff, test evidence and Hindsight (if available); it must not receive implementer's conversational scratchpad and does not read checkpoint comments (marker line above).
 - Hindsight may help recover technical gotchas but **must not** serve as the checkpoint database or a mechanism to bypass issue approvals.
 
 ## Planned automation vs available today
