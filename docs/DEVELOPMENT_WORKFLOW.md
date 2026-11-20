@@ -103,15 +103,15 @@ Draft identifiers such as `2.10-draft` are planning identifiers, **not** SemVer 
 
 All normative changes: separate `ICH-XXX` issue/proposal, impact analysis, approved scope/plan, authorized worktree and PR, independent review, human approval/merge, proportionate validation (editorial consistency, targeted control test, or focused/full pilot for structural change). `main` is normative after merge. Existing active issues remain pinned to their approved governance version absent explicit human migration; urgent security protection requires explicit decision. No automatic changes to enforcement that safeguards the same PR.
 
-## 13. Practical pre-pilot conflict resolutions
+## 13. Practical conflict resolutions
 
 - Single active WIP is compatible with emergency work only via human-authorized suspension and slot transfer.
 - Review cycle cap does not authorize merge of unreviewed new code; exception escalates.
-- Minimal DoD does not omit post-merge `main` CI/Linear closure required before slot release.
+- Minimal DoD does not omit post-merge `main` CI and the CP06 closure comment required before slot release.
 - Hindsight helps technical recall but cannot assert current PR correctness for independent reviewer.
 - Bootstrap provisioning is human-authorized before tools exist; a planned gate is not a currently enforceable gate.
 - New session inherits verified issue state and consumed retry/review counters; never silently resets them.
 
 ## 14. Unimplemented enforcement and open approvals
 
-This file does not create GitHub rulesets, Linear statuses, Hindsight installation/bank, scripts, review check machinery or SSH/CI access. Their actual availability must be checked during pilot. Architecture, bootstrap issues and governance freeze require explicit human acceptance. In absence of an objectively verifiable approval or gate state, **stop and ask** rather than assume success.
+This file does not create GitHub rulesets, Linear statuses, Hindsight installation/bank, scripts, review check machinery or SSH/CI access. Their actual availability must be checked before the governance freeze. Architecture, bootstrap issues and governance freeze require explicit human acceptance. In absence of an objectively verifiable approval or gate state, **stop and ask** rather than assume success.
