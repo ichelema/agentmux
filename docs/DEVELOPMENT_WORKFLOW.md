@@ -8,7 +8,7 @@ Human owner approves specifications, lightweight plans, architecture/permission/
 
 - One active execution slot (WIP=1), including remediation/review/integration. Future issues may be specified; exceptions require human-approved suspension and explicit reassignment.
 - One worktree and matching branch per issue, created by the Trinity command `1_create-worktree`: branch `<prefix>/<base-name>` and worktree `<repo-root>/.claude/worktrees/<prefix>+<base-name>`, where `<prefix>` is `bug` or `improvments` (from the issue type or label) and `<base-name>` is `<issue-id>-<model>`. Never trust a handoff instead of verifying real Git state.
-- No autonomous merge, direct protected-branch push, force push, unauthorized destructive changes, secret reads, privilege escalation or policy/CI bypass.
+- No autonomous merge, direct protected-branch push, force push, unauthorized destructive changes, secret reads, privilege escalation or policy/CI bypass. Single exception to the direct push rule: the resume prompt `RIPRESA.md` is updated by a direct commit to `main` that contains only that file, with the message `docs(ripresa): ...`. M0-06 must keep this exception compatible with the branch protection it configures, or revisit it.
 - All work must be traceable: Linear issue → approved spec/plan revisions → branch/worktree → commits/PR → review → human merge → post-merge CI → Linear completion.
 - Independent review runs as a read-only reviewer subagent with separate context, launched by the orchestrator on a detached review worktree (§4); max three normal review cycles across an issue, not three per agent restart.
 - Critical/High findings block merge; Medium/Low residual issues require explicit human-approved deferral into linked Linear issues.

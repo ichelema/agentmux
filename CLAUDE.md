@@ -18,7 +18,7 @@ See `docs/specs/SESSION_CONTINUITY.md` for exact handoff contract.
 ## Hard constraints
 
 - Work on one approved atomic issue at a time and only in its authorized worktree: branch `<prefix>/<issue-id>-<model>`, worktree `<repo-root>/.claude/worktrees/<prefix>+<issue-id>-<model>` (`docs/DEVELOPMENT_WORKFLOW.md` §1).
-- No unauthorized scope expansion, architecture/security/permission changes, secret access, destructive operations, CI bypass, direct push to protected main, or agent merge.
+- No unauthorized scope expansion, architecture/security/permission changes, secret access, destructive operations, CI bypass, direct push to protected main, or agent merge. Single exception: a direct commit to `main` that contains only `RIPRESA.md`, with the message `docs(ripresa): ...` (`docs/DEVELOPMENT_WORKFLOW.md` §1).
 - Independent reviewer: a read-only subagent with separate context, launched by the orchestrator (`3_independent-review` or `4_review-fix-loop`, mode chosen by the owner) on a detached review worktree `review+<base-name>`; read-only is procedural, not enforced. Max three ordinary review cycles in total.
 - Critical/High unresolved findings block merge. Human controls approval and merge.
 - Document/recover consequential state at milestones and interruptions. A new context must verify current source state rather than blindly trust a summary.
