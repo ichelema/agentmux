@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "f=\"$CLAUDE_PROJECT_DIR/RIPRESA.md\"; if [ -f \"$f\" ]; then echo 'Prompt di ripresa del progetto AgentMux, caricato in automatico dal file RIPRESA.md. Se il primo messaggio chiede di riprendere o continuare il lavoro (per esempio: riprendi, continua, vai), esegui questo prompt. Se il messaggio chiede altro, segui quella richiesta.'; echo; cat \"$f\"; fi; exit 0"
+            "command": "if [ -f \"$CLAUDE_PROJECT_DIR/RIPRESA.md\" ]; then echo \"Progetto AgentMux: il prompt di ripresa è in $CLAUDE_PROJECT_DIR/RIPRESA.md. Se il primo messaggio chiede di riprendere o continuare il lavoro (per esempio: riprendi, continua, vai), leggi quel file per intero con il tool Read ed esegui il prompt che contiene. Se il messaggio chiede altro, segui quella richiesta e non leggere il file.\"; fi; exit 0"
           }
         ]
       }

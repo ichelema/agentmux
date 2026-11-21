@@ -1,7 +1,7 @@
 # RIPRESA — prompt per la prossima sessione
 
-> Avvio: l'hook `SessionStart` di `.claude/settings.json` carica questo file nel contesto a ogni avvio e dopo
-> `/clear`: basta scrivere «riprendi». Senza hook: «Leggi RIPRESA.md ed esegui il prompt». Scritto il 2026-11-20 su Linux, dopo la chiusura di M0-02 (ICH-566, merge `ba53aa8`). Il lavoro da
+> Avvio: l'hook `SessionStart` di `.claude/settings.json`, a ogni avvio e dopo `/clear`, indica questo file e lo fa
+> leggere solo se chiedi di riprendere: basta scrivere «riprendi». Senza hook: «Leggi RIPRESA.md ed esegui il prompt». Scritto il 2026-11-20 su Linux, dopo la chiusura di M0-02 (ICH-566, merge `ba53aa8`). Il lavoro da
 > fare è il **bootstrap M0** di `docs/BOOTSTRAP_PLAN.md`, una issue alla volta, con il workflow di Trinity.
 
 ## Stato e prossimo step (aggiornato il 2026-11-20, nessuna issue in corso)
@@ -19,7 +19,7 @@
   commit per issue diverse da quella attiva. Linear collega quelle issue alla PR e le porta In Progress; rimuovere il
   link non basta, perché ogni sync della PR lo ricrea. Nel corpo della PR usa una riga «Related» senza parola magica.
 - **Rischio rinviato a M0-06** (spec-r2 di ICH-566, OQ-9): un agente può scrivere istruzioni in `RIPRESA.md` senza
-  review, e l'hook di avvio le carica a ogni sessione (finding F6). M0-06 sceglie protezione di `main`, CODEOWNERS o
+  review, e l'hook di avvio le fa eseguire alla ripresa (finding F6). M0-06 sceglie protezione di `main`, CODEOWNERS o
   una regola di diff visibile all'utente, e mantiene compatibile l'eccezione di `RIPRESA.md` (regola 4).
 - **Prossimo step: l'utente sceglie la prossima issue** (regola 1). Lo slot WIP è libero. `docs/BOOTSTRAP_PLAN.md`
   prevede M0-03 «Architecture Baseline»: vision, requirements, architecture e ADR revisionati, nessun codice di
