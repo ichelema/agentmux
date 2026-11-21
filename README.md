@@ -12,4 +12,4 @@ No code, CI, tests or branch protection exist yet.
 - [`docs/DEVELOPMENT_WORKFLOW.md`](docs/DEVELOPMENT_WORKFLOW.md): development governance and safeguards.
 - [`docs/specs/SESSION_CONTINUITY.md`](docs/specs/SESSION_CONTINUITY.md): cross-session resume, handoff format, recovery.
 - [`.github/pull_request_template.md`](.github/pull_request_template.md): structure of the PR body.
-- [`RIPRESA.md`](RIPRESA.md): resume prompt for the next agent session (in Italian).
+- [`handoff.md`](handoff.md): resume prompt for the next agent session (in Italian).

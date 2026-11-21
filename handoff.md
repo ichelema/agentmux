@@ -1,10 +1,10 @@
-# RIPRESA — prompt per la prossima sessione
+# Handoff — prompt per la prossima sessione
 
 > Avvio: l'hook `SessionStart` di `.claude/settings.json`, a ogni avvio e dopo `/clear`, indica questo file e lo fa
-> leggere solo se chiedi di riprendere: basta scrivere «riprendi». Senza hook: «Leggi RIPRESA.md ed esegui il prompt». Scritto il 2026-11-20 su Linux, dopo la chiusura di M0-02 (ICH-566, merge `ba53aa8`). Il lavoro da
+> leggere solo se chiedi di riprendere: basta scrivere «riprendi». Senza hook: «Leggi handoff.md ed esegui il prompt». Scritto il 2026-11-20 su Linux, dopo la chiusura di M0-02 (ICH-566, merge `ba53aa8`). Il lavoro da
 > fare è il **bootstrap M0** di `docs/BOOTSTRAP_PLAN.md`, una issue alla volta, con il workflow di Trinity.
 
-## Stato e prossimo step (aggiornato il 2026-11-20, nessuna issue in corso)
+## Stato e prossimo step (aggiornato il 2026-11-21, nessuna issue in corso)
 
 - **M0-01 fatto:** ICH-548 «Repository Foundation / Controlled Pilot», PR #1, merge `9de59ec`.
 - **M0-02 fatto:** ICH-566 «Track and align the development governance documents», PR #2, merge `ba53aa8` (head
@@ -12,15 +12,20 @@
   `docs/specs/SESSION_CONTINUITY.md`, `.github/pull_request_template.md` e `.claude/settings.json`; governance
   `2.10-draft`. Chiusura CP06 nel commento di chiusura di ICH-566. Worktree, branch locale e branch remoto rimossi.
 - ICH-557, ICH-558 e ICH-559 sono risolte da PR #2: sono Done, con un commento di risoluzione ciascuna.
+- **Rinomina del 2026-11-21:** `RIPRESA.md` ora si chiama `handoff.md`, con un commit diretto su `main` che
+  aggiorna anche `CLAUDE.md`, `docs/DEVELOPMENT_WORKFLOW.md`, `README.md` e l'hook di `.claude/settings.json`. È
+  un'eccezione alla regola 4, autorizzata dall'utente una sola volta durante il setup del progetto: d'ora in poi
+  valgono tutte le regole. L'eccezione dei commit diretti vale ora per `handoff.md`, con lo stesso prefisso
+  `docs(ripresa)`.
 - **Deviazione aperta (E6, OQ-2 di ICH-566):** l'integrazione GitHub di Linear porta ancora la issue a Done al merge,
   non a In Review. Al merge di PR #2 ICH-566, ICH-558 e ICH-559 sono passate a Done prima del commento di chiusura.
   La prova CP06 è il commento di chiusura, non lo stato Done. L'impostazione la cambia solo l'utente.
 - **Lezione di M0-02:** non scrivere parole magiche (`Resolves`, `Fixes`, `Closes` seguite da un ID) nei messaggi di
   commit per issue diverse da quella attiva. Linear collega quelle issue alla PR e le porta In Progress; rimuovere il
   link non basta, perché ogni sync della PR lo ricrea. Nel corpo della PR usa una riga «Related» senza parola magica.
-- **Rischio rinviato a M0-06** (spec-r2 di ICH-566, OQ-9): un agente può scrivere istruzioni in `RIPRESA.md` senza
+- **Rischio rinviato a M0-06** (spec-r2 di ICH-566, OQ-9): un agente può scrivere istruzioni in `handoff.md` senza
   review, e l'hook di avvio le fa eseguire alla ripresa (finding F6). M0-06 sceglie protezione di `main`, CODEOWNERS o
-  una regola di diff visibile all'utente, e mantiene compatibile l'eccezione di `RIPRESA.md` (regola 4).
+  una regola di diff visibile all'utente, e mantiene compatibile l'eccezione di `handoff.md` (regola 4).
 - **Prossimo step: l'utente sceglie la prossima issue** (regola 1). Lo slot WIP è libero. `docs/BOOTSTRAP_PLAN.md`
   prevede M0-03 «Architecture Baseline»: vision, requirements, architecture e ADR revisionati, nessun codice di
   integrazione. Cosa fa la nuova sessione:
@@ -72,11 +77,11 @@
    basta: registrala tu sulla issue con un commento «written by Claude Code on the owner's instruction».
 3. Convenzioni Trinity per branch, worktree e review (decisione su ICH-557).
 4. L'agent non fa merge e non fa push su `main`. Push del branch di lavoro solo con refspec esplicito. **Unica
-   eccezione** (scelta dell'utente del 2026-11-20): gli aggiornamenti di `RIPRESA.md` vanno su `main` con un commit
+   eccezione** (scelta dell'utente del 2026-11-20): gli aggiornamenti di `handoff.md` vanno su `main` con un commit
    diretto `docs(ripresa): ...` che contiene solo questo file.
 5. Review indipendente: subagente read-only con contesto separato, su worktree detached; massimo 3 cicli per issue.
    Finding Critical/High bloccano il merge.
-6. Commenti Linear, commit e PR in inglese (`lang:en`). `RIPRESA.md` resta in italiano.
+6. Commenti Linear, commit e PR in inglese (`lang:en`). `handoff.md` resta in italiano.
 7. Scrivi su Linear dalla sessione principale con `linear.py`: un subagente può essere bloccato dal classificatore
    dei permessi.
 8. Scrivi un checkpoint `agentmux.handoff.v1` sulla issue a ogni checkpoint CP01–CP06, prima di chiudere la sessione,
@@ -117,7 +122,7 @@ Procedura da eseguire dopo ogni merge, anche da `5_remove-worktree` («Chiusura 
 1. Aggiorna la sezione «Stato e prossimo step» di questo file: issue chiusa con PR e SHA del merge, issue nate dal
    lavoro, decisioni dell'utente, prossimo step concreto e decisioni che servono.
 2. Aggiorna la data nel titolo della sezione.
-3. Commit diretto su `main` con il solo `RIPRESA.md` (`git add RIPRESA.md`, messaggio `docs(ripresa): ...` in
+3. Commit diretto su `main` con il solo `handoff.md` (`git add handoff.md`, messaggio `docs(ripresa): ...` in
    inglese), poi `git push origin main`. Prima controlla che `main` locale sia allineato a `origin/main`.
 4. Retain su Hindsight delle decisioni e delle cause radice verificate (tag `claude-code`, `repo:agentmux`).
 
