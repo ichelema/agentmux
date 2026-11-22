@@ -8,7 +8,7 @@ No code, CI, tests or branch protection exist yet.
 
 ## Documents
 
-- [`CLAUDE.md`](CLAUDE.md): operating instructions for an agent starting in this repository.
+- [`CLAUDE.md`](CLAUDE.md): operating instructions for an agent starting in this repository (in Italian).
 - [`docs/VISION.md`](docs/VISION.md): product vision, principles and non-goals.
 - [`docs/REQUIREMENTS.md`](docs/REQUIREMENTS.md): product requirements summary.
 - [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md): architecture baseline of `agentd` and `agentctl`.
@@ -18,5 +18,6 @@ No code, CI, tests or branch protection exist yet.
 - [`docs/DEVELOPMENT_WORKFLOW.md`](docs/DEVELOPMENT_WORKFLOW.md): development governance and safeguards.
 - [`docs/specs/SESSION_CONTINUITY.md`](docs/specs/SESSION_CONTINUITY.md): cross-session resume, handoff format, recovery.
 - [`.github/pull_request_template.md`](.github/pull_request_template.md): structure of the PR body.
-- [`handoff.md`](handoff.md): resume prompt for the next agent session (in Italian).
+- [`handoff.md`](handoff.md): next steps for the next agent session, nothing else (in Italian).
+- [`memory/memory.md`](memory/memory.md): index of the persistent project memory (in Italian).
 - [`.mcp.json`](.mcp.json) and [`.claude/rules/context7.md`](.claude/rules/context7.md): Context7 documentation server and the rule that tells agents when to use it.
