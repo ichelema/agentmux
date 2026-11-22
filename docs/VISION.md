@@ -1,6 +1,6 @@
 # AgentMux — Product Vision
 
-**Status:** Draft — requires human approval before becoming the authoritative product vision.
+**Status:** authoritative product vision, part of the owner-approved architecture baseline of ICH-588 (M0-03), under `governance 2.10-draft`. Changes follow `docs/DEVELOPMENT_WORKFLOW.md` §3.
 
 ## Purpose
 
@@ -49,4 +49,4 @@ This document defines **why** AgentMux exists and what it aims to accomplish. `d
 
 M0: foundation and controlled pilot; M1: PTY runtime; M2: terminal emulation; M3: Notcurses TUI and layouts; M4: detach/reattach; M5: local/remote configuration and SSH; M6: existing CLI agent integration.
 
-**Approval:** Pending. This document must not be represented as human-approved merely because it has been created.
+**Approval:** approved by the owner through ICH-588 (M0-03); the approval record is on that Linear issue.

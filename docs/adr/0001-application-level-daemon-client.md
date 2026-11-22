@@ -1,6 +1,6 @@
 # ADR-0001 — Application-level PTY daemon and Notcurses client
 
-**Status:** draft record of previously selected architecture; requires baseline human acceptance.
+**Status:** Accepted — owner sign-off through ICH-588 (M0-03), specification approved on 2026-11-22, effective at the owner merge.
 
 ## Context
 

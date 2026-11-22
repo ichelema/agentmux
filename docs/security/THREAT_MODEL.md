@@ -1,4 +1,6 @@
-# AgentMux threat model — pre-pilot baseline
+# AgentMux threat model — baseline
+
+**Status:** part of the owner-approved architecture baseline of ICH-588 (M0-03), under `governance 2.10-draft`. Changes follow `docs/DEVELOPMENT_WORKFLOW.md` §3.
 
 Risk-based modeling. Revisit boundaries when IPC/SSH, credentials, PTY ownership, terminal parsing, privileges, dependencies or sensitive surfaces change.
 
