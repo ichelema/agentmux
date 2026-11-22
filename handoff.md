@@ -1,10 +1,10 @@
 # Handoff — prompt per la prossima sessione
 
 > Avvio: l'hook `SessionStart` di `.claude/settings.json`, a ogni avvio e dopo `/clear`, indica questo file e lo fa
-> leggere solo se chiedi di riprendere: basta scrivere «riprendi». Senza hook: «Leggi handoff.md ed esegui il prompt». Scritto il 2026-11-20 su Linux, dopo la chiusura di M0-02 (ICH-566, merge `ba53aa8`). Il lavoro da
+> leggere solo se chiedi di riprendere: basta scrivere «riprendi». Senza hook: «Leggi handoff.md ed esegui il prompt». Scritto il 2026-11-20 su Linux; ultimo aggiornamento il 2026-11-22, dopo la chiusura di M0-03 (ICH-588, merge `883f86a`). Il lavoro da
 > fare è il **bootstrap M0** di `docs/BOOTSTRAP_PLAN.md`, una issue alla volta, con il workflow di Trinity.
 
-## Stato e prossimo step (aggiornato il 2026-11-21, nessuna issue in corso)
+## Stato e prossimo step (aggiornato il 2026-11-22, nessuna issue in corso)
 
 - **M0-01 fatto:** ICH-548 «Repository Foundation / Controlled Pilot», PR #1, merge `9de59ec`.
 - **M0-02 fatto:** ICH-566 «Track and align the development governance documents», PR #2, merge `ba53aa8` (head
@@ -17,9 +17,21 @@
   un'eccezione alla regola 4, autorizzata dall'utente una sola volta durante il setup del progetto: d'ora in poi
   valgono tutte le regole. L'eccezione dei commit diretti vale ora per `handoff.md`, con lo stesso prefisso
   `docs(ripresa)`.
-- **Deviazione aperta (E6, OQ-2 di ICH-566):** l'integrazione GitHub di Linear porta ancora la issue a Done al merge,
-  non a In Review. Al merge di PR #2 ICH-566, ICH-558 e ICH-559 sono passate a Done prima del commento di chiusura.
-  La prova CP06 è il commento di chiusura, non lo stato Done. L'impostazione la cambia solo l'utente.
+- **M0-03 fatto:** ICH-588 «Track and review the architecture baseline documents (M0-03)», PR #3, merge `883f86a`
+  (head `c7ae1cc`, recensita al ciclo 1 con review `soft`, nessun finding; cicli usati 1 su 3). `main` traccia i sei
+  documenti di architettura (baseline approvata dall'utente, ADR-0001 Accepted), `.mcp.json` e
+  `.claude/rules/context7.md`. `hindsight.config.json` resta fuori dal repository ed è in `.gitignore` (OQ-2 di
+  ICH-588). Chiusura CP06 nel commento di chiusura di ICH-588. Worktree di implementazione e di review, branch locale e
+  branch remoto rimossi.
+- **Note residue della review di ICH-588** (nessuna issue aperta, decide l'utente): parte del testo storico di
+  `docs/BOOTSTRAP_PLAN.md` («Prerequisites», «Proposed M0 issue order») è superato; le righe di stato dei cinque
+  documenti di baseline citano `governance 2.10-draft` e vanno aggiornate al prossimo cambio di versione.
+- **Deviazione aperta (E6 di ICH-566, E5 di ICH-588):** l'integrazione GitHub di Linear porta ancora la issue a Done al
+  merge, non a In Review. È successo con PR #2 e di nuovo con PR #3. La prova CP06 è il commento di chiusura, non lo
+  stato Done. L'impostazione la cambia solo l'utente.
+- **Lezione di M0-03:** in una sessione entrata nel worktree con `EnterWorktree`, il controllo di isolamento rifiuta i
+  comandi Bash composti con `git` (cicli `for`, `cd` in subshell, variabili per il comando). Scrivi un comando semplice
+  per chiamata, con path assoluti.
 - **Lezione di M0-02:** non scrivere parole magiche (`Resolves`, `Fixes`, `Closes` seguite da un ID) nei messaggi di
   commit per issue diverse da quella attiva. Linear collega quelle issue alla PR e le porta In Progress; rimuovere il
   link non basta, perché ogni sync della PR lo ricrea. Nel corpo della PR usa una riga «Related» senza parola magica.
@@ -27,22 +39,24 @@
   review, e l'hook di avvio le fa eseguire alla ripresa (finding F6). M0-06 sceglie protezione di `main`, CODEOWNERS o
   una regola di diff visibile all'utente, e mantiene compatibile l'eccezione di `handoff.md` (regola 4).
 - **Prossimo step: l'utente sceglie la prossima issue** (regola 1). Lo slot WIP è libero. `docs/BOOTSTRAP_PLAN.md`
-  prevede M0-03 «Architecture Baseline»: vision, requirements, architecture e ADR revisionati, nessun codice di
-  integrazione. Cosa fa la nuova sessione:
+  prevede M0-04 «CMake Foundation»: eseguibili minimi `agentd` e `agentctl` in C17 che compilano, nessuna sessione e
+  nessun PTY. È la prima issue con codice: la spec deve fissare toolchain e versioni (`docs/ARCHITECTURE.md`, vincolo 6;
+  `docs/DEVELOPMENT_WORKFLOW.md` §10). Cosa fa la nuova sessione:
   1. esegue «Prima di iniziare» qui sotto e controlla che su Linear nessuna issue di Agentmux sia In Progress;
-  2. chiede all'utente la prossima issue. Se l'utente sceglie M0-03, controlla che la issue non esista già, propone
+  2. chiede all'utente la prossima issue. Se l'utente sceglie M0-04, controlla che la issue non esista già, propone
      il command qui sotto in un blocco di codice e si ferma: lo invoca l'utente (regola 10);
   3. dopo il command si ferma al gate CP01: mostra all'utente la spec e chiede l'approvazione.
 
   ```text
-  /trinity:workflow:0_create-issue M0-03 Architecture Baseline for project Agentmux (BOOTSTRAP_PLAN): track in the repository the seed architecture documents (docs/VISION.md, docs/REQUIREMENTS.md, docs/ARCHITECTURE.md, docs/adr/0001-application-level-daemon-client.md, docs/security/THREAT_MODEL.md, docs/BOOTSTRAP_PLAN.md) and review them for consistency with the governance merged in M0-02 (2.10-draft). Decide whether .mcp.json and .claude/rules/context7.md belong in the repository. No integration code. Use the AgentMux specification template (DEVELOPMENT_WORKFLOW "Specification template"). Spec and plan need owner approval before any implementation.
+  /trinity:workflow:0_create-issue M0-04 CMake Foundation for project Agentmux (BOOTSTRAP_PLAN): minimal agentd and agentctl C17 executables that build with CMake and Ninja. No sessions, no PTYs, no libghostty-vt, Notcurses or SSH code. Decide and pin the toolchain versions for this step (ARCHITECTURE constraint 6, DEVELOPMENT_WORKFLOW §10). Use the AgentMux specification template (DEVELOPMENT_WORKFLOW "Specification template"). Spec and plan need owner approval before any implementation.
   ```
 
 - **Decisioni dell'utente che servono:**
   - la prossima issue;
-  - l'integrazione GitHub in Linear (OQ-2): al merge la issue deve andare in «In Review», non in «Done»; meglio
-    cambiarla prima del prossimo merge;
-  - il prefisso del branch: `1_create-worktree` conosce solo `bug` e `improvments` (M0-02 ha usato `improvments`).
+  - l'integrazione GitHub in Linear (OQ-2 di ICH-566, OQ-5 di ICH-588): al merge la issue deve andare in «In Review»,
+    non in «Done»; meglio cambiarla prima del prossimo merge;
+  - il prefisso del branch: `1_create-worktree` conosce solo `bug` e `improvments` (M0-02 e M0-03 hanno usato
+    `improvments`).
 
 ## Contesto
 
@@ -50,10 +64,9 @@
   `libghostty-vt`) e `agentctl` (C17, Notcurses). In M0 niente PTY, VT, Notcurses o SSH.
 - Governance `2.10-draft`, non congelata. Documenti canonici: `CLAUDE.md`, `docs/DEVELOPMENT_WORKFLOW.md`,
   `docs/specs/SESSION_CONTINUITY.md`, `docs/ARCHITECTURE.md`, `docs/BOOTSTRAP_PLAN.md`, `docs/adr/`.
-- I documenti di governance sono tracciati da M0-02. Restano **file seed non tracciati** nel checkout principale:
-  `docs/VISION.md`, `docs/REQUIREMENTS.md`, `docs/ARCHITECTURE.md`, `docs/BOOTSTRAP_PLAN.md`, `docs/adr/`,
-  `docs/security/`, `.mcp.json`, `.claude/rules/`. Entrano in Git con M0-03, non prima e non fuori da una issue
-  approvata.
+- I documenti di governance sono tracciati da M0-02, quelli di architettura da M0-03. Nel checkout principale non
+  restano file seed non tracciati: `hindsight.config.json` è locale e ignorato da `.gitignore`.
+- Le copie seed degli 8 file tracciati da M0-03 sono in `~/.claude/tmp/agentmux-seed-bak/ICH-588/`.
 - Le copie seed dei 5 file tracciati da M0-02 sono in `~/.claude/tmp/agentmux-seed-bak/m0-02/`. Quella cartella
   contiene anche directory vuote con nomi sbagliati, create per errore il 2026-11-20: si possono rimuovere.
 - Linear: team ICH, progetto **Agentmux** (label di progetto `lang:en`). GitHub: `ichelema/agentmux`, pubblico,
