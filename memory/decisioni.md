@@ -31,4 +31,5 @@ derivano sono in [`CLAUDE.md`](../CLAUDE.md).
    dell'utente. L'identificatore di governance resta `2.10-draft`, come per la rinomina `879e99e`.
 8. **2026-11-22 — Lingua.** Scelta dell'utente: solo le issue sono in inglese (label di progetto
    `lang:en`). `CLAUDE.md`, `handoff.md` e `memory/` sono in italiano. Commenti, commit e PR
-   restano in inglese, perché i command di Trinity usano la lingua del progetto Linear.
+   restano in inglese, perché i command di Trinity usano la lingua del progetto Linear. Anche i
+   messaggi dei commit `docs(ripresa)` restano in inglese (scelta dell'utente).
