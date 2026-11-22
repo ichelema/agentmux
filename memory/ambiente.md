@@ -2,7 +2,8 @@
 
 ## Servizi
 
-- **Linear:** team `ICH`, progetto **Agentmux**, label di progetto `lang:en`.
+- **Linear:** team `ICH`, progetto **Agentmux**, label di progetto `lang:it` (issue in italiano) e
+  `git:en` (commit e PR in inglese).
 - **GitHub:** `ichelema/agentmux`, pubblico. `main` non ha protezione né CI: arrivano con M0-06.
 - **Hindsight:** bank `agentmux`, tag `repo:agentmux` e `claude-code`. Il file locale
   `hindsight.config.json` nella root è ignorato da Git.

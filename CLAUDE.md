@@ -110,9 +110,11 @@ command con il tool Skill e non eseguirli leggendo il loro file.
   `docs/specs/SESSION_CONTINUITY.md`).
 - Scrivi su Linear dalla sessione principale con `linear.py`: il classificatore dei permessi può
   bloccare un subagente.
-- Lingua: le issue Linear sono in inglese (label di progetto `lang:en`). I command di Trinity usano
-  la stessa lingua per commenti, commit e PR; anche i messaggi `docs(ripresa)` sono in inglese.
-  Il resto è in italiano: `CLAUDE.md`, `handoff.md` e `memory/`.
+- Lingua: le label del progetto Linear decidono la lingua dei command di Trinity. Con `lang:it`
+  issue e commenti su Linear sono in italiano; con `git:en` commit, PR e commenti sulla PR sono in
+  inglese. Anche i messaggi `docs(ripresa)` sono in inglese. `CLAUDE.md`, `handoff.md` e `memory/`
+  sono in italiano. I marcatori restano identici anche nei commenti in italiano: «written by Claude
+  Code on the owner's instruction» e la prima riga del checkpoint `agentmux.handoff.v1`.
 - Usa le parole magiche `Resolves`, `Fixes` e `Closes` solo con l'ID della issue attiva; nel corpo
   della PR elenca le altre issue in una riga `Related`.
 - In una sessione entrata nel worktree con `EnterWorktree`, scrivi un comando Bash semplice per

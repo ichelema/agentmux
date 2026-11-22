@@ -29,7 +29,10 @@ derivano sono in [`CLAUDE.md`](../CLAUDE.md).
    `docs/DEVELOPMENT_WORKFLOW.md` è allineato. Motivo: `handoff.md` accumulava la storia del lavoro
    ed era difficile da usare. Il riordino è un commit diretto su `main`, eccezione una tantum
    dell'utente. L'identificatore di governance resta `2.10-draft`, come per la rinomina `879e99e`.
-8. **2026-11-22 — Lingua.** Scelta dell'utente: solo le issue sono in inglese (label di progetto
-   `lang:en`). `CLAUDE.md`, `handoff.md` e `memory/` sono in italiano. Commenti, commit e PR
-   restano in inglese, perché i command di Trinity usano la lingua del progetto Linear. Anche i
-   messaggi dei commit `docs(ripresa)` restano in inglese (scelta dell'utente).
+8. **2026-11-22 — Lingua.** Scelta dell'utente: due label di progetto separano le lingue. `lang:it`
+   mette in italiano issue e commenti su Linear; `git:en` mette in inglese commit, PR e commenti
+   sulla PR. Le regole stanno nella sezione «Lingua» della skill `linear` di Trinity (commit
+   `48afcfe`). Motivo: scegliere in modo separato la lingua delle issue e quella di GitHub. Anche i
+   messaggi dei commit `docs(ripresa)` restano in inglese. `CLAUDE.md`, `handoff.md` e `memory/`
+   sono in italiano. Le issue già chiuse (ICH-548…ICH-588) restano in inglese: sono state scritte
+   con la label `lang:en`, che il progetto non ha più.
