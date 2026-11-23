@@ -1,6 +1,6 @@
 # AgentMux
 
-**Status:** `governance 2.10-draft`, not frozen. This repository is **not** an implemented project.
+**Status:** `governance 2.11-draft`, not frozen. This repository is **not** an implemented project.
 
 AgentMux is a Linux application-level terminal session multiplexer and orchestrator for existing CLI AI agents, with a persistent PTY daemon and a C17 Notcurses client.
 

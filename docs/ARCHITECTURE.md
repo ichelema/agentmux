@@ -1,6 +1,6 @@
 # AgentMux architecture — agreed design baseline
 
-**Status:** derived from planning decisions; part of the owner-approved architecture baseline of ICH-588 (M0-03), under `governance 2.10-draft`. Architecture evolution follows `docs/DEVELOPMENT_WORKFLOW.md` §3 and approved ADRs.
+**Status:** derived from planning decisions; part of the owner-approved architecture baseline of ICH-588 (M0-03), under `governance 2.11-draft`. Architecture evolution follows `docs/DEVELOPMENT_WORKFLOW.md` §3 and approved ADRs.
 
 ## Goal and operating model
 

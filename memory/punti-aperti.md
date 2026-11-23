@@ -10,14 +10,17 @@ chiude, rimuovi la voce e registra l'esito in [storico.md](storico.md) o in
    l'utente cambia l'impostazione (OQ-2 di ICH-566, OQ-5 di ICH-588); conviene farlo prima del
    prossimo merge. Finché non cambia, dopo il merge controlla lo stato e registra la deviazione nel
    commento di chiusura.
-2. **Scritture senza review nei documenti di sessione (rischio F6, rinviato a M0-06; spec-r2 di
-   ICH-566, OQ-9).** Un agente può scrivere istruzioni in `handoff.md` e in `memory/` con un
-   commit diretto, senza review. L'hook di avvio fa leggere `handoff.md` alla ripresa e
-   `CLAUDE.md` fa consultare `memory/`. M0-06 sceglie tra protezione di `main`, CODEOWNERS o una
-   regola di diff visibile all'utente, e mantiene compatibile l'eccezione `docs(ripresa)`.
+2. **Scritture senza review lette alla ripresa (rischio F6, rinviato a M0-06).** Un agente può
+   scrivere istruzioni in `handoff.md` e in `memory/` con un commit diretto, senza review. L'hook
+   di avvio fa leggere `handoff.md` alla ripresa, `CLAUDE.md` fa consultare `memory/` e ogni
+   sessione carica `.claude/` (hook e regole, per esempio `.claude/rules/context7.md`). La spec
+   `spec-r2` di ICH-566 (OQ-9, approvata dall'utente) rinvia il finding e lo rende un input
+   obbligatorio della spec di M0-06; la spec di ICH-588 lo ripete per `handoff.md` e `.claude/`.
+   M0-06 sceglie tra protezione di `main`, CODEOWNERS o una regola di diff visibile all'utente:
+   oggi nessuna è installata. M0-06 mantiene compatibile l'eccezione `docs(ripresa)`. Il record
+   del rinvio stava in `RIPRESA.md`, poi in `handoff.md`; dal riordino del 2026-11-22 sta qui, e
+   la chiusura della sessione lo riporta in `handoff.md` quando la prossima issue è M0-06.
 3. **Prefisso del branch.** `1_create-worktree` conosce solo `bug` e `improvments`; M0-02 e M0-03
    hanno usato `improvments`. L'utente decide il prefisso delle prossime issue.
-4. **Note residue della review di ICH-588** (nessuna issue aperta). Parte del testo storico di
-   `docs/BOOTSTRAP_PLAN.md` («Prerequisites», «Proposed M0 issue order») è superata. Le righe di
-   stato dei cinque documenti di baseline citano `governance 2.10-draft`: aggiornale al prossimo
-   cambio di versione.
+4. **Nota residua della review di ICH-588** (nessuna issue aperta). Parte del testo storico di
+   `docs/BOOTSTRAP_PLAN.md` («Prerequisites», «Proposed M0 issue order») è superata.

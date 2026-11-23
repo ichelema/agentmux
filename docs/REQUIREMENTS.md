@@ -1,6 +1,6 @@
 # AgentMux product requirements — summary
 
-**Status:** design summary, part of the owner-approved architecture baseline of ICH-588 (M0-03), under `governance 2.10-draft`; technical acceptance criteria must be elaborated in approved Linear issues/specs. Changes follow `docs/DEVELOPMENT_WORKFLOW.md` §3.
+**Status:** design summary, part of the owner-approved architecture baseline of ICH-588 (M0-03), under `governance 2.11-draft`; technical acceptance criteria must be elaborated in approved Linear issues/specs. Changes follow `docs/DEVELOPMENT_WORKFLOW.md` §3.
 
 ## Intended capabilities
 

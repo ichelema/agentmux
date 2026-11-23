@@ -28,11 +28,30 @@ derivano sono in [`CLAUDE.md`](../CLAUDE.md).
    chiusura. L'eccezione `docs(ripresa)` copre ora `handoff.md` e `memory/`: il §1 di
    `docs/DEVELOPMENT_WORKFLOW.md` è allineato. Motivo: `handoff.md` accumulava la storia del lavoro
    ed era difficile da usare. Il riordino è un commit diretto su `main`, eccezione una tantum
-   dell'utente. L'identificatore di governance resta `2.10-draft`, come per la rinomina `879e99e`.
+   dell'utente. Il testo di governance che ne risulta ha l'identificatore `2.11-draft` (punto 9).
 8. **2026-11-22 — Lingua.** Scelta dell'utente: due label di progetto separano le lingue. `lang:it`
    mette in italiano issue e commenti su Linear; `git:en` mette in inglese commit, PR e commenti
    sulla PR. Le regole stanno nella sezione «Lingua» della skill `linear` di Trinity (commit
    `48afcfe`). Motivo: scegliere in modo separato la lingua delle issue e quella di GitHub. Anche i
    messaggi dei commit `docs(ripresa)` restano in inglese. `CLAUDE.md`, `handoff.md` e `memory/`
    sono in italiano. Le issue già chiuse (ICH-548…ICH-588) restano in inglese: sono state scritte
-   con la label `lang:en`, che il progetto non ha più.
+   con la label `lang:en`, che il progetto non ha più. Il cambio è entrato con il commit diretto
+   su `main` `bffbbd7`, su istruzione dell'utente.
+9. **2026-11-23 — Governance `2.11-draft`.** Una review GPT dei documenti di sessione ha trovato
+   che `2.10-draft` indicava due testi diversi, contro il §12 di `docs/DEVELOPMENT_WORKFLOW.md`.
+   Scelta dell'utente: il testo con il riordino, l'eccezione `memory/`, la lingua e le correzioni
+   della review ha l'identificatore `2.11-draft`, anche nelle righe di stato dei quattro documenti
+   di baseline che lo citano. `2.10-draft` indica il testo fino al commit `990819a`; le issue
+   chiuse restano fissate alla loro versione. Le correzioni delle review GPT e Fable sono entrate
+   con un solo commit diretto su `main`, su istruzione dell'utente. I commit già pubblicati
+   `5ad5099`, `049af9d` e `bffbbd7` portano ancora `2.10-draft`: il loro testo è intermedio.
+10. **2026-11-23 — Workflow completo.** Scelte dell'utente dopo la stessa review: la catena dei
+    command comprende `2_work-simplify` e `2_work-verify` (facoltativo); le due modalità di
+    `3_independent-review` avviano entrambe un subagente (`hard` Fable, `soft` Sonnet);
+    `issue-cycle` si propone solo dopo CP02, per una sola issue, e CP05 si controlla a parte. Il
+    testo è in `CLAUDE.md` e nel §4 di `docs/DEVELOPMENT_WORKFLOW.md`.
+11. **2026-11-23 — Hook `SessionStart` invariato.** L'hook di `.claude/settings.json` indica
+    `$CLAUDE_PROJECT_DIR/handoff.md`. In una sessione avviata dentro il worktree di una issue
+    indicherebbe la copia ferma al punto in cui è nato il branch (finding N10 della review Fable).
+    Scelta dell'utente: lasciare l'hook com'è, perché le sessioni partono dalla root e `CLAUDE.md`
+    dice di leggere `handoff.md` solo da `<repo-root>`.
