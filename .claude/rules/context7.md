@@ -1,62 +1,65 @@
-Use Context7 MCP for these three areas, with the fixed IDs of each section:
+Usa il server MCP Context7 per queste tre aree, con gli ID fissi di ogni sezione:
 
-- libghostty (`libghostty-vt`): the VT library selected for `agentd` in `docs/ARCHITECTURE.md`.
-  See [libghostty](#libghostty).
-- Notcurses (`dankamongmen/notcurses`): the TUI library selected for `agentctl` in
-  `docs/ARCHITECTURE.md`. See [Notcurses](#notcurses).
-- Linux system interfaces in C: the interfaces listed for `agentd` in `docs/ARCHITECTURE.md` (PTY
-  APIs, `epoll`, Unix domain sockets, process/wait handling) and terminal I/O. See
-  [Linux system interfaces](#linux-system-interfaces).
+- libghostty (`libghostty-vt`): la libreria VT scelta per `agentd` in `docs/ARCHITECTURE.md`.
+  Vedi [libghostty](#libghostty).
+- Notcurses (`dankamongmen/notcurses`): la libreria TUI scelta per `agentctl` in
+  `docs/ARCHITECTURE.md`. Vedi [Notcurses](#notcurses).
+- Interfacce di sistema Linux in C: le interfacce elencate per `agentd` in `docs/ARCHITECTURE.md`
+  (API PTY, `epoll`, socket Unix domain, gestione dei processi e di wait) e l'I/O del terminale.
+  Vedi [Interfacce di sistema Linux](#interfacce-di-sistema-linux).
 
-Use Context7 even when you think you know the answer: your training data may not reflect recent
-changes.
+Usa Context7 anche quando credi di sapere la risposta: i tuoi dati di addestramento possono non
+contenere i cambiamenti recenti.
 
 ## libghostty
 
-For libghostty skip `resolve-library-id` and use this ID:
+Per libghostty salta `resolve-library-id` e usa questo ID:
 
 - `/websites/libghostty_tip_ghostty` (libghostty VT, <https://libghostty.tip.ghostty.org>):
-  reference for the `libghostty-vt` C API — functions, parameters, types and examples.
+  riferimento per la C API di `libghostty-vt` — funzioni, parametri, tipi ed esempi.
 
-This source documents the `tip` (development) version of Ghostty. Its API can differ from the
-version that AgentMux pins. Once the project pins a `libghostty-vt` version, the headers of the
-pinned version are authoritative: if Context7 and the pinned headers disagree, the headers win.
+Questa fonte documenta la versione `tip` (di sviluppo) di Ghostty. La sua API può essere diversa
+dalla versione che AgentMux fissa. Quando il progetto fissa una versione di `libghostty-vt`, gli
+header della versione fissata fanno fede: se Context7 e gli header fissati non coincidono, vincono
+gli header.
 
 ## Notcurses
 
-For Notcurses skip `resolve-library-id` and use these IDs:
+Per Notcurses salta `resolve-library-id` e usa questi ID:
 
-- `/dankamongmen/notcurses` (Notcurses on GitHub): main reference for implementation, functions,
-  parameters and examples.
-- `/websites/deepwiki_dankamongmen_notcurses` (Notcurses on DeepWiki): complementary reference to
-  explore the architecture, understand the relations between components or analyze the internals.
+- `/dankamongmen/notcurses` (Notcurses su GitHub): riferimento principale per implementazione,
+  funzioni, parametri ed esempi.
+- `/websites/deepwiki_dankamongmen_notcurses` (Notcurses su DeepWiki): riferimento complementare
+  per esplorare l'architettura, capire le relazioni tra i componenti o analizzare gli interni.
 
-The man pages installed with Notcurses are authoritative for signatures, return values, flags,
-constants and pointer ownership. They match the installed version, while Context7 can index a
-different version: if Context7 and the installed man pages disagree, the installed man pages win.
+Le man page installate con Notcurses fanno fede per firme, valori di ritorno, flag, costanti e
+proprietà dei puntatori. Corrispondono alla versione installata, mentre Context7 può indicizzare
+una versione diversa: se Context7 e le man page installate non coincidono, vincono le man page
+installate.
 
-## Linux system interfaces
+## Interfacce di sistema Linux
 
-For Linux system interfaces skip `resolve-library-id` and use these IDs:
+Per le interfacce di sistema Linux salta `resolve-library-id` e usa questi ID:
 
-- `/websites/man7_linux_man-pages` (Linux man-pages, <https://man7.org/linux/man-pages/>): main
-  reference for signatures, return values, `errno` values, flags and standards, for example
-  `posix_openpt(3)`, `grantpt(3)` and `ptsname(3)`.
-- `/websites/sourceware_glibc_manual_html_node` (GNU C Library Reference Manual): complementary
-  reference for concepts, for example pseudo-terminal pairs (`openpty`, `forkpty`), controlling
-  terminals and terminal modes.
+- `/websites/man7_linux_man-pages` (Linux man-pages, <https://man7.org/linux/man-pages/>):
+  riferimento principale per firme, valori di ritorno, valori di `errno`, flag e standard, per
+  esempio `posix_openpt(3)`, `grantpt(3)` e `ptsname(3)`.
+- `/websites/sourceware_glibc_manual_html_node` (GNU C Library Reference Manual): riferimento
+  complementare per i concetti, per esempio le coppie di pseudo-terminali (`openpty`, `forkpty`),
+  i terminali di controllo e le modalità del terminale.
 
-Context7 indexes the latest published version of both sources. The man pages installed on the build
-system match the installed kernel and glibc: if Context7 and the installed man pages disagree, the
-installed man pages win.
+Context7 indicizza l'ultima versione pubblicata di entrambe le fonti. Le man page installate sul
+sistema di build corrispondono al kernel e alla glibc installati: se Context7 e le man page
+installate non coincidono, vincono le man page installate.
 
-## Steps
+## Passi
 
-1. For the three areas above, use the fixed IDs of the matching section. For any other library,
-   start with `resolve-library-id`, passing the library name and what to look up, unless the user
-   provides an exact library ID in `/org/project` format
-2. For any other library, pick the best match (ID format: `/org/project`) by exact name match,
-   description relevance, source reputation and benchmark score
-3. Call `query-docs` with the selected library ID, a query scoped to a single concept and
-   `language: "C"` for the three areas above. Make a separate call per concept
-4. Answer using the fetched docs
+1. Per le tre aree sopra, usa gli ID fissi della sezione corrispondente. Per ogni altra libreria,
+   parti da `resolve-library-id`, con il nome della libreria e cosa cercare, salvo che l'utente
+   indichi un ID esatto della libreria nel formato `/org/project`
+2. Per ogni altra libreria, scegli la corrispondenza migliore (formato dell'ID: `/org/project`) in
+   base a corrispondenza esatta del nome, pertinenza della descrizione, reputazione della fonte e
+   punteggio di benchmark
+3. Chiama `query-docs` con l'ID della libreria scelta, una query limitata a un solo concetto e
+   `language: "C"` per le tre aree sopra. Fai una chiamata separata per ogni concetto
+4. Rispondi usando i documenti trovati

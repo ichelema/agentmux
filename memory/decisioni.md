@@ -33,9 +33,10 @@ derivano sono in [`CLAUDE.md`](../CLAUDE.md).
    mette in italiano issue e commenti su Linear; `git:en` mette in inglese commit, PR e commenti
    sulla PR. Le regole stanno nella sezione «Lingua» della skill `linear` di Trinity (commit
    `48afcfe`). Motivo: scegliere in modo separato la lingua delle issue e quella di GitHub. Anche i
-   messaggi dei commit `docs(ripresa)` restano in inglese. `CLAUDE.md`, `handoff.md` e `memory/`
-   sono in italiano. Le issue già chiuse (ICH-548…ICH-588) restano in inglese: sono state scritte
-   con la label `lang:en`, che il progetto non ha più. Il cambio è entrato con il commit diretto
+   messaggi dei commit `docs(ripresa)` restano in inglese. `CLAUDE.md`, `handoff.md`, `memory/`,
+   `docs/` e `README.md` sono in italiano (i documenti dal punto 15). Le issue già chiuse
+   (ICH-548…ICH-588) restano in inglese: sono state scritte con la label `lang:en`, che il
+   progetto non ha più. Il cambio è entrato con il commit diretto
    su `main` `bffbbd7`, su istruzione dell'utente.
 9. **2026-11-23 — Governance `2.11-draft`.** Una review GPT dei documenti di sessione ha trovato
    che `2.10-draft` indicava due testi diversi, contro il §12 di `docs/DEVELOPMENT_WORKFLOW.md`.
@@ -85,5 +86,14 @@ derivano sono in [`CLAUDE.md`](../CLAUDE.md).
 15. **2026-11-23 — Documenti in italiano.** Scelta dell'utente: tutti i documenti del repository
     passano dall'inglese all'italiano, e le regole che li vogliono in inglese cambiano. Commit, PR
     e commenti sulla PR restano nella lingua della label `git:` del progetto Linear (oggi
-    `git:en`, inglese). Cambia il punto 8 per i documenti. Da applicare: è il primo lavoro di
-    `handoff.md`.
+    `git:en`, inglese): per questo `.github/pull_request_template.md` resta in inglese. Cambia
+    il punto 8 per i documenti. Il perimetro tradotto è `docs/` (ADR compresi), `README.md` e,
+    su richiesta dell'utente dopo la review, `.claude/rules/context7.md`; la regola sta nel punto
+    «Lingua» della sezione «Regole» di `CLAUDE.md`. Trinity non cambia: la sua regola sulla
+    lingua (skill `linear`, sezione «Lingua») copre solo issue e Git, e nessun command, skill o
+    agente di Trinity vuole i documenti in inglese. Il testo che ne risulta è la
+    governance `2.13-draft`; `2.12-draft` indica il testo fino al commit `ea7acaa`. Eccezione a
+    §12 di `docs/DEVELOPMENT_WORKFLOW.md`, scelta dell'utente: commit diretto su `main` senza
+    issue e senza PR, dopo una review Fable senza finding Critical o High (4 Medium e 13 Low,
+    corretti tranne quello sotto). La traduzione di `.claude/rules/context7.md` chiude il finding
+    F-16. Resta aperto: alcune coppie di termini non sono ancora allineate tra i file (F-08, Low).

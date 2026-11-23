@@ -5,7 +5,7 @@ Linux. Architettura e toolchain sono in `docs/ARCHITECTURE.md`. Il progetto è n
 (`docs/BOOTSTRAP_PLAN.md`): M0 non implementa PTY, `libghostty-vt`, Notcurses o SSH
 (`docs/DEVELOPMENT_WORKFLOW.md` §11).
 
-**Stato:** governance `2.12-draft`, tracciata nel repository, **non** congelata.
+**Stato:** governance `2.13-draft`, tracciata nel repository, **non** congelata.
 
 **Fonti di verità:** Git per il codice e per i documenti del repository (`docs/`, ADR,
 governance); Linear (team `ICH`, progetto Agentmux) per la issue, la spec e il piano approvati, le
@@ -23,7 +23,7 @@ punto in cui è nato il branch. Il reviewer indipendente fa eccezione (sezione �
 | `handoff.md` | Cosa fa la prossima sessione, nient'altro |
 | `memory/` | Memoria persistente del progetto; indice in `memory/memory.md` |
 | `docs/DEVELOPMENT_WORKFLOW.md` | Governance: gate CP01–CP06, ruoli, review, limiti dei tentativi |
-| `docs/specs/SESSION_CONTINUITY.md` | Algoritmo di ripresa e checkpoint `agentmux.handoff.v1` su Linear |
+| `docs/specs/SESSION_CONTINUITY.md` | Ripresa e checkpoint `agentmux.handoff.v1` su Linear |
 | `docs/ARCHITECTURE.md`, `docs/adr/` | Baseline di architettura e ADR |
 | `docs/VISION.md`, `docs/REQUIREMENTS.md` | Visione e requisiti del prodotto |
 | `docs/security/THREAT_MODEL.md` | Confini di fiducia e controlli minimi |
@@ -47,8 +47,12 @@ obbligatori a inizio sessione (algoritmo completo in `docs/specs/SESSION_CONTINU
    - è in Backlog o Todo con un checkpoint `agentmux.handoff.v1` o con il record di approvazione
      della sua spec (CP01) o del suo piano (CP02): è tra la specifica e l'implementazione;
    - è la issue dell'ultima PR mergiata e non ha ancora il commento di chiusura CP06. Elenca le PR
-     con `gh pr list -R ichelema/agentmux --state merged --limit 100 --json number,headRefName,mergedAt` e
-     prendi quella con `mergedAt` più recente: l'ID della issue è nel nome del branch.
+     con il comando qui sotto e prendi quella con `mergedAt` più recente: l'ID della issue è nel
+     nome del branch.
+
+     ```bash
+     gh pr list -R ichelema/agentmux --state merged --limit 100 --json number,headRefName,mergedAt
+     ```
 
    Lo slot WIP lo liberano solo il commento CP06 o una sospensione autorizzata dall'utente, non il
    nome dello stato. Se il caso non è chiaro, fermati e chiedi all'utente.
@@ -153,10 +157,13 @@ Dopo `issue-cycle` e dopo `4_review-fix-loop` controlla CP05 come al punto 5:
 - Lingua: le label del progetto Linear decidono la lingua dei testi che restano (sezione «Lingua»
   della skill `linear` di Trinity). `lang:it` mette in italiano issue e commenti su Linear;
   `git:en` mette in inglese commit, PR e commenti sulla PR. Anche i messaggi `docs(ripresa)` sono
-  in inglese. `CLAUDE.md`, `handoff.md` e `memory/` sono in italiano. I marcatori restano identici
-  anche nei commenti in italiano: «written by Claude Code on the owner's instruction», la prima
-  riga del checkpoint `agentmux.handoff.v1` e l'inizio `**CP06 closure — ICH-XXX` della prima
-  riga del commento di chiusura.
+  in inglese. `CLAUDE.md`, `.claude/rules/`, `handoff.md`, `memory/`, `docs/` (ADR compresi) e
+  `README.md` sono in italiano. `.github/pull_request_template.md` è il corpo della PR: segue la
+  label `git:`. Nei documenti non si traducono blocchi di codice, path, comandi e identificatori.
+  I marcatori restano identici anche nei testi in italiano:
+  «written by Claude Code on the owner's instruction», la prima riga del checkpoint
+  `agentmux.handoff.v1` e l'inizio `**CP06 closure — ICH-XXX` della prima riga del commento di
+  chiusura.
 - Usa una parola magica di Linear, di chiusura (`Fixes`, `Closes`, `Resolves`…) o di collegamento
   (`Refs`, `Part of`, `Related to`…), solo con l'ID della issue attiva. Nel titolo della PR e nei
   commit cita solo la issue attiva. Le altre issue vanno nel corpo della PR, in una riga

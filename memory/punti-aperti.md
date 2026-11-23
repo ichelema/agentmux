@@ -24,7 +24,9 @@ chiude, rimuovi la voce e registra l'esito in [storico.md](storico.md) o in
 3. **Prefisso del branch.** `1_create-worktree` conosce solo `bug` e `improvments`; M0-02 e M0-03
    hanno usato `improvments`. L'utente decide il prefisso delle prossime issue.
 4. **Nota residua della review di ICH-588** (nessuna issue aperta). Parte del testo storico di
-   `docs/BOOTSTRAP_PLAN.md` («Prerequisites», «Proposed M0 issue order») è superata.
+   `docs/BOOTSTRAP_PLAN.md` («Prerequisiti (di responsabilità umana)», «Ordine proposto delle
+   issue M0 (label di pianificazione e ID Linear)») è superata. La traduzione in italiano del
+   2026-11-23 (punto 15 di [decisioni.md](decisioni.md)) non l'ha aggiornata.
 5. **Memoria scritta durante una issue (finding L3 della review Fable del 2026-11-23, Low).** Se
    il branch di una issue viene riallineato a `main` dopo un commit `docs(ripresa)`, il worktree
    di review contiene note di memoria scritte durante la issue, che il diff della PR non mostra.

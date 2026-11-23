@@ -1,43 +1,43 @@
-# M0 staged bootstrap and controlled pilot
+# Bootstrap graduale di M0 e pilota controllato
 
-**Status:** in progress. GitHub (`ichelema/agentmux`) and Linear (team ICH, project Agentmux) are provisioned; branch protection and CI do not exist yet (M0-06).
+**Stato:** in corso. GitHub (`ichelema/agentmux`) e Linear (team ICH, progetto Agentmux) sono predisposti; la protezione dei branch e la CI non esistono ancora (M0-06).
 
-## Prerequisites (human-owned)
+## Prerequisiti (di responsabilità umana)
 
-Approve seed documents and project architecture; provision/authorize GitHub and Linear; establish agent credentials and permission boundaries; establish independent reviewer environment; confirm what checks/automation can actually be enforced. The seed repository cannot claim a review gate or branch protection until configured and tested.
+Approvare i documenti seed e l'architettura del progetto; predisporre e autorizzare GitHub e Linear; stabilire le credenziali degli agenti e i confini dei permessi; stabilire l'ambiente del reviewer indipendente; confermare quali controlli e quale automazione si possono davvero imporre con un controllo tecnico (enforcement). Il repository seed non può dichiarare un gate di review né la protezione dei branch finché non sono configurati e provati.
 
-## Proposed M0 issue order (planning labels and Linear IDs)
+## Ordine proposto delle issue M0 (label di pianificazione e ID Linear)
 
-| Order | Linear issue | Issue title | Verifiable deliverable | Important exclusion |
+| Ordine | Issue Linear | Titolo della issue | Deliverable verificabile | Esclusione importante |
 |---|---|---|---|---|
-| M0-01 | ICH-548 | Repository Foundation / Controlled Pilot | Minimal valid repo, README and `.gitignore`, reviewed PR/merge | No CMake, PTY or app features |
-| M0-02 | ICH-566 | Development Governance | Consolidated workflow, agent instructions and templates tracked in repo | No new policy without approval |
-| M0-03 | ICH-588 | Architecture Baseline | Vision/requirements/architecture/ADRs reviewed | No integration code |
-| M0-04 | — | CMake Foundation | Minimal `agentd` and `agentctl` C17 executables compile | No actual sessions/PTYS |
-| M0-05 | — | Test Infrastructure | CTest, representative test, sanitizer wiring | No SSH E2E |
-| M0-06 | — | GitHub Actions CI | PR build/test/checks, protected main configured and validated | No release publication |
+| M0-01 | ICH-548 | Repository Foundation / Controlled Pilot | Repository minimo valido, README e `.gitignore`, PR/merge con review | Niente CMake, PTY o funzionalità dell'app |
+| M0-02 | ICH-566 | Development Governance | Workflow consolidato, istruzioni per gli agenti e template tracciati nel repository | Nessuna nuova policy senza approvazione |
+| M0-03 | ICH-588 | Architecture Baseline | Visione, requisiti, architettura e ADR sottoposti a review | Nessun codice di integrazione |
+| M0-04 | — | CMake Foundation | Gli eseguibili C17 minimi `agentd` e `agentctl` compilano | Nessuna sessione/PTYS reale |
+| M0-05 | — | Test Infrastructure | CTest, test rappresentativo, integrazione dei sanitizer | Nessun E2E via SSH |
+| M0-06 | — | GitHub Actions CI | Build, test e controlli sulle PR, main protetto configurato e validato | Nessuna pubblicazione di release |
 
-The planning labels `M0-xx` must be replaced by Linear-issued `ICH-XXX` IDs. Split any issue if it is too large to be atomic. Note: the initial repo seed and governance documents themselves may need to be introduced administratively before the pilot PR. The human must approve how to avoid treating preseeded files as a completed pilot deliverable. **A pilot consisting only of adding README/.gitignore is meaningful only if those files have not already been integrated in the baseline.** A clean alternative is to provision an empty Git repository first, then run the pilot, then add the consolidated documentation in M0-02/M0-03. The owner chose this clean alternative: the pilot ICH-548 ran on an empty repository, and ICH-566 and ICH-588 added the seed documents.
+Le label di pianificazione `M0-xx` devono essere sostituite dagli ID `ICH-XXX` emessi da Linear. Dividi ogni issue troppo grande per essere atomica. Nota: il seed iniziale del repository e i documenti di governance potrebbero dover essere introdotti in via amministrativa prima della PR pilota. L'umano deve approvare come evitare di trattare i file preesistenti come un deliverable completato del pilota. **Un pilota che consiste solo nell'aggiungere README/.gitignore ha senso solo se quei file non sono già stati integrati nella baseline.** Un'alternativa pulita è predisporre prima un repository Git vuoto, poi eseguire il pilota, poi aggiungere la documentazione consolidata in M0-02/M0-03. Il proprietario ha scelto questa alternativa pulita: il pilota ICH-548 è stato eseguito su un repository vuoto, e ICH-566 e ICH-588 hanno aggiunto i documenti seed.
 
-## Pilot sequence
+## Sequenza del pilota
 
-1. Approve atomic issue specification with AC and explicit out-of-scope.
-2. Approve independent lightweight plan.
-3. Acquire exclusive execution slot; create matching worktree/branch.
-4. Run Implementer with approved context; collect limited test evidence.
-5. Run read-only Independent Reviewer (`docs/DEVELOPMENT_WORKFLOW.md` §4) against exact commit and AC; remediate within three cycles.
-6. Require human review/approval and merge; verify main CI; post the CP06 closure comment on the issue, which releases the slot (`docs/DEVELOPMENT_WORKFLOW.md` §2).
-7. Audit WIP exclusivity, permissions, review isolation, traceability, gate effectiveness and session continuity by deliberately stopping and resuming a non-destructive session during the pilot.
-8. Record discovered governance conflicts and human-approved corrections; freeze `1.0.0` only after explicit sign-off.
+1. Approvare la specifica atomica della issue, con AC e fuori perimetro esplicito.
+2. Approvare il piano leggero indipendente.
+3. Acquisire lo slot di esecuzione esclusivo; creare il worktree e il branch corrispondenti.
+4. Eseguire l'Implementer con il contesto approvato; raccogliere prove di test limitate.
+5. Eseguire il Reviewer indipendente in sola lettura (`docs/DEVELOPMENT_WORKFLOW.md` §4) sul commit esatto e sugli AC; correggere entro tre cicli.
+6. Richiedere la review e l'approvazione umane e il merge; verificare la CI di main; pubblicare sulla issue il commento di chiusura CP06, che rilascia lo slot (`docs/DEVELOPMENT_WORKFLOW.md` §2).
+7. Controllare l'esclusività del WIP, i permessi, l'isolamento della review, la tracciabilità, l'efficacia dei gate e la continuità della sessione, fermando e riprendendo di proposito una sessione non distruttiva durante il pilota.
+8. Registrare i conflitti di governance scoperti e le correzioni approvate da un umano; congelare `1.0.0` solo dopo un'approvazione esplicita.
 
-## Session continuity pilot acceptance criteria
+## Criteri di accettazione del pilota di continuità della sessione
 
-- Checkpoint retains issue, approved revision IDs, commit SHA, test evidence, budget counters and next action.
-- New independent agent session reconstructs state without needing original chat history.
-- New session notices altered Git state and refuses to overwrite conflicting or uncommitted changes.
-- Hindsight recall is verified and does not override an ADR/spec/Linear approval.
-- Reviewer receives its own context; no implementer scratchpad is transferred.
+- Il checkpoint conserva la issue, gli ID delle revisioni approvate, lo SHA del commit, le prove di test, i contatori del budget e la prossima azione.
+- Una nuova sessione indipendente dell'agente ricostruisce lo stato senza bisogno della cronologia originale della chat.
+- La nuova sessione si accorge di uno stato Git alterato e rifiuta di sovrascrivere modifiche in conflitto o non committate.
+- Il recall di Hindsight è verificato e non prevale su un'approvazione di ADR, spec o Linear.
+- Il reviewer riceve un proprio contesto; nessuno scratchpad dell'implementer viene trasferito.
 
-## Notes on enforcement
+## Note sul controllo tecnico (enforcement)
 
-Atomic WIP lock, GitHub rulesets, protected CI, reviewer check, dependency locks and automated Hindsight memory access are M0 implementation/configuration tasks. Until they exist, use human supervision, explicit checks and restricted permissions; never represent procedural protection as technically enforced.
+Il lock WIP atomico, i ruleset di GitHub, la CI protetta, il controllo del reviewer, i lock delle dipendenze e l'accesso automatico alla memoria di Hindsight sono attività di implementazione e configurazione di M0. Finché non esistono, usa la supervisione umana, controlli espliciti e permessi ristretti; non presentare mai una protezione procedurale come imposta da un controllo tecnico.

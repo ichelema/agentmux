@@ -1,25 +1,25 @@
-# AgentMux product requirements — summary
+# Requisiti del prodotto AgentMux — riepilogo
 
-**Status:** design summary, part of the owner-approved architecture baseline of ICH-588 (M0-03), under `governance 2.12-draft`; technical acceptance criteria must be elaborated in approved Linear issues/specs. Changes follow `docs/DEVELOPMENT_WORKFLOW.md` §3.
+**Stato:** riepilogo di progettazione, parte della baseline di architettura approvata dal proprietario con ICH-588 (M0-03), sotto `governance 2.13-draft`; i criteri di accettazione tecnici devono essere elaborati nelle issue e nelle spec approvate su Linear. Le modifiche seguono `docs/DEVELOPMENT_WORKFLOW.md` §3.
 
-## Intended capabilities
+## Capacità previste
 
-- Linux client/daemon terminal multiplexing with persistent PTY-owning daemon.
-- Interactive shells and full-screen terminal applications (e.g. Vim) with VT emulation.
-- Local and remote interaction through a single versioned IPC contract, using OpenSSH for remote access.
-- Client-side tabs/splits, pane focus and input routing with Notcurses.
-- Terminal screen snapshots/diffs transmitted from daemon to client; reconnect after client/SSH disconnect while daemon remains alive.
-- Optional CLI agent status integration (Claude Code, Codex, Gemini), including OSC 7501 when compatible and verified.
-- Setup wizard and XDG/TOML configuration profiles; independent client/daemon protocol negotiation.
+- Multiplexing di terminale client/daemon su Linux, con un daemon persistente che possiede i PTY.
+- Shell interattive e applicazioni di terminale a schermo intero (per esempio Vim) con emulazione VT.
+- Interazione locale e remota tramite un unico contratto IPC versionato, con OpenSSH per l'accesso remoto.
+- Tab e split lato client, focus dei pane e instradamento dell'input con Notcurses.
+- Snapshot e diff dello schermo del terminale trasmessi dal daemon al client; riconnessione dopo la disconnessione del client o di SSH mentre il daemon resta attivo.
+- Integrazione facoltativa dello stato degli agent da CLI (Claude Code, Codex, Gemini), incluso OSC 7501 quando è compatibile e verificato.
+- Wizard di configurazione e profili di configurazione XDG/TOML; negoziazione indipendente del protocollo tra client e daemon.
 
-## Non-goals in initial milestones
+## Non-obiettivi nelle milestone iniziali
 
-- Reimplementing or modifying third-party CLI agent internals.
-- Durable process/session restoration after daemon crash, reboot, or host failure.
-- Implementing tmux, abduco or dtach as dependencies for detach/attach.
-- Shipping terminal or SSH features during M0.
-- Assuming OSC status reflects trustworthy task success.
+- Reimplementare o modificare gli interni degli agent da CLI di terze parti.
+- Ripristino duraturo di processi e sessioni dopo un crash del daemon, un riavvio o un guasto dell'host.
+- Implementare tmux, abduco o dtach come dipendenze per il detach/attach.
+- Rilasciare funzionalità di terminale o SSH durante M0.
+- Presumere che lo stato OSC rifletta un successo affidabile dell'attività.
 
-## Cross-cutting requirements
+## Requisiti trasversali
 
-Least privilege; secure IPC; limits for input and memory; explicit API contracts; C17 product builds; risk-based tests combining mocks, real PTYs and end-to-end integration; no secrets stored in logs or AI memory. Consult `docs/ARCHITECTURE.md` and `docs/security/THREAT_MODEL.md`.
+Privilegio minimo; IPC sicuro; limiti per input e memoria; contratti API espliciti; build del prodotto in C17; test basati sul rischio che combinano mock, PTY reali e integrazione end-to-end; nessun segreto memorizzato nei log o nella memoria dell'AI. Consulta `docs/ARCHITECTURE.md` e `docs/security/THREAT_MODEL.md`.

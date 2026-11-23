@@ -1,22 +1,22 @@
-# ADR-0001 — Application-level PTY daemon and Notcurses client
+# ADR-0001 — Daemon PTY a livello di applicazione e client Notcurses
 
-**Status:** Accepted — owner sign-off through ICH-588 (M0-03), specification approved on 2026-11-22, effective at the owner merge.
+**Stato:** Accettato — approvazione del proprietario con ICH-588 (M0-03), specifica approvata il 2026-11-22, in vigore dal merge del proprietario.
 
-## Context
+## Contesto
 
-AgentMux needs independent terminal child processes, local/remote attachment and preservation of PTY state after UI or SSH disconnection without relying on tmux/abduco/dtach.
+AgentMux ha bisogno di processi figli di terminale indipendenti, di collegamento locale e remoto e della conservazione dello stato del PTY dopo la disconnessione della UI o di SSH, senza dipendere da tmux/abduco/dtach.
 
-## Decision
+## Decisione
 
-Use two Linux executables in C17: persistent PTY-owning `agentd`, and Notcurses-based `agentctl`. `agentd` performs ANSI/VT parsing using pinned `libghostty-vt` through its C interface and exposes a versioned IPC protocol over Unix socket or SSH-carried stream. `agentctl` handles UI layout and rendering.
+Usa due eseguibili Linux in C17: `agentd`, persistente e proprietario dei PTY, e `agentctl`, basato su Notcurses. `agentd` esegue il parsing ANSI/VT con `libghostty-vt`, a versione fissata, tramite la sua interfaccia C, ed espone un protocollo IPC con versione su socket Unix o su stream portato da SSH. `agentctl` gestisce layout e disegno della UI.
 
-## Consequences
+## Conseguenze
 
-- Clear responsibility and trust boundaries, daemon independently supervised.
-- Must build reliable IPC snapshot/diff, reconnect/resync, resource management and auth.
-- Daemon lifetime, not user interface lifetime, bounds persistence; daemon restart recovery is excluded initially.
-- Third-party library integration and exact APIs must be validated before implementing relevant milestones.
+- Responsabilità e confini di fiducia chiari; il daemon ha una supervisione indipendente.
+- Vanno costruiti snapshot/diff via IPC, riconnessione/risincronizzazione, gestione delle risorse e autenticazione affidabili.
+- La persistenza dura quanto il daemon, non quanto l'interfaccia utente; il ripristino dopo un riavvio del daemon è escluso all'inizio.
+- L'integrazione delle librerie di terze parti e le API esatte vanno controllate prima di implementare le milestone interessate.
 
-## Alternatives considered
+## Alternative considerate
 
-Embedded terminal emulator in client; terminal passthrough to terminal emulator; tmux/abduco/dtach dependency. Rejected for the selected architecture.
+Emulatore di terminale incorporato nel client; passthrough del terminale verso l'emulatore di terminale; dipendenza da tmux/abduco/dtach. Scartate per l'architettura scelta.

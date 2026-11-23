@@ -1,52 +1,52 @@
-# AgentMux — Product Vision
+# AgentMux — Visione del prodotto
 
-**Status:** authoritative product vision, part of the owner-approved architecture baseline of ICH-588 (M0-03), under `governance 2.12-draft`. Changes follow `docs/DEVELOPMENT_WORKFLOW.md` §3.
+**Stato:** visione del prodotto che fa fede, parte della baseline di architettura approvata dal proprietario con ICH-588 (M0-03), sotto `governance 2.13-draft`. Le modifiche seguono `docs/DEVELOPMENT_WORKFLOW.md` §3.
 
-## Purpose
+## Scopo
 
-AgentMux is a lightweight, Linux-focused terminal-session manager designed to operate existing interactive CLI tools and, later, orchestrate existing AI coding agents. It separates long-lived terminal processes from their user interface so that local or remote sessions can continue when the client disconnects.
+AgentMux è un gestore leggero di sessioni di terminale, pensato per Linux. Serve a far funzionare strumenti CLI interattivi esistenti e, più avanti, a orchestrare agent AI di programmazione esistenti. Separa i processi di terminale di lunga durata dalla loro interfaccia utente, così le sessioni locali o remote possono continuare quando il client si disconnette.
 
-## Core principles
+## Principi fondamentali
 
-1. **Daemon owns execution:** `agentd` owns PTY masters, child process lifecycle, session identities and authoritative virtual terminal state.
-2. **Client owns presentation:** `agentctl` provides an interactive TUI, initial setup and connection profiles, tabs, splits, focus and input routing.
-3. **One mental model for local and remote:** `agentctl` connects to an `agentd` endpoint via a local Unix socket or an SSH-carried transport; the application protocol remains consistent.
-4. **Reconnect without losing the session:** a disconnected client can reconnect while the daemon and host remain running; recovery after daemon failure or host reboot is **not** promised in the initial scope.
-5. **Use libraries by responsibility:** `libghostty-vt` in `agentd` for VT/ANSI terminal emulation; Notcurses in `agentctl` for TUI rendering. Linux PTY and event facilities support the runtime.
-6. **Agent integration is optional and incremental:** shells and Vim must work independently before adding support for existing tools such as Claude Code, Codex and Gemini CLI. OSC 7501 is a possible status signal, not proof of task completion.
-7. **Small, reviewable increments:** specification-driven delivery via atomic Linear issues (`ICH-XXX`), independent review and human-controlled merge.
+1. **Il daemon possiede l'esecuzione:** `agentd` possiede i master PTY, il ciclo di vita dei processi figli, le identità delle sessioni e lo stato del terminale virtuale che fa fede.
+2. **Il client possiede la presentazione:** `agentctl` fornisce una TUI interattiva, la configurazione iniziale e i profili di connessione, le tab, gli split, il focus e l'instradamento dell'input.
+3. **Un unico modello mentale per locale e remoto:** `agentctl` si connette a un endpoint `agentd` tramite un socket Unix locale o un trasporto via SSH; il protocollo applicativo resta coerente.
+4. **Riconnettersi senza perdere la sessione:** un client disconnesso può riconnettersi finché il daemon e l'host restano in esecuzione; il ripristino dopo un guasto del daemon o un riavvio dell'host **non** è promesso nel perimetro iniziale.
+5. **Usare le librerie secondo la responsabilità:** `libghostty-vt` in `agentd` per l'emulazione di terminale VT/ANSI; Notcurses in `agentctl` per il rendering della TUI. Le funzionalità Linux per PTY ed eventi sostengono il runtime.
+6. **L'integrazione degli agent è facoltativa e incrementale:** shell e Vim devono funzionare in modo indipendente prima di aggiungere il supporto a strumenti esistenti come Claude Code, Codex e Gemini CLI. OSC 7501 è un possibile segnale di stato, non la prova che un'attività sia completata.
+7. **Incrementi piccoli e facili da sottoporre a review:** consegna guidata dalle specifiche tramite issue Linear atomiche (`ICH-XXX`), review indipendente e merge controllato da un umano.
 
-## Intended capabilities
+## Capacità previste
 
-- Start and manage independent PTY-backed interactive processes on Linux.
-- Display multiple terminal sessions through tabs and split panes with correct input focus and resize behavior.
-- Maintain session output and virtual screen state while no client is attached.
-- Use the same client for local and SSH-remote endpoints; support reconnect and configuration profiles.
-- Expose a versioned client/daemon protocol with explicit compatibility and capability negotiation.
-- Later, observe and control existing CLI AI agents without modifying their internals.
+- Avviare e gestire processi interattivi indipendenti, basati su PTY, su Linux.
+- Mostrare più sessioni di terminale tramite tab e pane divisi, con focus dell'input e ridimensionamento corretti.
+- Mantenere l'output della sessione e lo stato dello schermo virtuale mentre nessun client è collegato.
+- Usare lo stesso client per endpoint locali e remoti via SSH; supportare la riconnessione e i profili di configurazione.
+- Esporre un protocollo client/daemon versionato, con compatibilità e negoziazione delle capacità esplicite.
+- In seguito, osservare e controllare gli agent AI da CLI esistenti senza modificarne gli interni.
 
-## Explicit non-goals for the initial versions
+## Non-obiettivi espliciti per le prime versioni
 
-- Reimplement all tmux functionality or depend on tmux, abduco or dtach for session persistence.
-- Guarantee live process recovery after the daemon crashes or the Linux host reboots.
-- Implement an LLM, replace the internals of existing AI CLI applications, or rely solely on terminal text/OSC status for semantic correctness.
-- Offer multi-user remote terminal sharing, distributed high availability or production-grade cluster orchestration in the first milestones.
-- Add extensive framework dependencies or complex UIs before the terminal-runtime prototype is validated.
+- Reimplementare tutte le funzionalità di tmux o dipendere da tmux, abduco o dtach per la persistenza delle sessioni.
+- Garantire il recupero dei processi attivi dopo un crash del daemon o un riavvio dell'host Linux.
+- Implementare un LLM, sostituire gli interni delle applicazioni CLI di AI esistenti, o affidarsi solo al testo del terminale o allo stato OSC per la correttezza semantica.
+- Offrire la condivisione remota del terminale tra più utenti, l'alta disponibilità distribuita o l'orchestrazione di cluster di livello produttivo nelle prime milestone.
+- Aggiungere molte dipendenze da framework o UI complesse prima che il prototipo del runtime di terminale sia validato.
 
-## Success criteria
+## Criteri di successo
 
-1. Two independent Linux PTY sessions can run Vim and a shell with functioning input and rendering.
-2. A client can show both sessions in a vertical split, switch focus and resize without corrupting their terminal states.
-3. After `agentctl` closes or SSH disconnects, sessions continue while `agentd` remains alive and can be reattached.
-4. Local and remote connections use the same versioned application protocol with explicit error behavior.
-5. The project follows the approved development workflow: Linear specification and plan approval, worktree isolation, CI evidence, independent review and human-approved merge.
+1. Due sessioni PTY Linux indipendenti possono eseguire Vim e una shell, con input e rendering funzionanti.
+2. Un client può mostrare entrambe le sessioni in uno split verticale, cambiare il focus e ridimensionare senza corrompere il loro stato di terminale.
+3. Dopo che `agentctl` si chiude o SSH si disconnette, le sessioni continuano mentre `agentd` resta attivo e possono essere ricollegate.
+4. Le connessioni locali e remote usano lo stesso protocollo applicativo versionato, con un comportamento esplicito in caso di errore.
+5. Il progetto segue il workflow di sviluppo approvato: approvazione della specifica e del piano su Linear, isolamento con worktree, prove della CI, review indipendente e merge approvato da un umano.
 
-## Scope boundaries and authoritative references
+## Confini del perimetro e riferimenti che fanno fede
 
-This document defines **why** AgentMux exists and what it aims to accomplish. `docs/REQUIREMENTS.md` defines requirements; `docs/ARCHITECTURE.md` defines the architecture; approved ADRs document architectural decisions; `docs/DEVELOPMENT_WORKFLOW.md` defines development governance; Linear contains issue-specific acceptance criteria and approved plans. Conflicts require human resolution, not unilateral agent assumptions.
+Questo documento definisce **perché** AgentMux esiste e che cosa vuole ottenere. `docs/REQUIREMENTS.md` definisce i requisiti; `docs/ARCHITECTURE.md` definisce l'architettura; gli ADR approvati documentano le decisioni architetturali; `docs/DEVELOPMENT_WORKFLOW.md` definisce la governance dello sviluppo; Linear contiene i criteri di accettazione specifici di ogni issue e i piani approvati. I conflitti richiedono una risoluzione umana, non ipotesi unilaterali degli agenti.
 
-## Milestone direction
+## Direzione delle milestone
 
-M0: foundation and controlled pilot; M1: PTY runtime; M2: terminal emulation; M3: Notcurses TUI and layouts; M4: detach/reattach; M5: local/remote configuration and SSH; M6: existing CLI agent integration.
+M0: fondamenta e pilota controllato; M1: runtime PTY; M2: emulazione di terminale; M3: TUI Notcurses e layout; M4: detach/reattach; M5: configurazione locale/remota e SSH; M6: integrazione degli agent da CLI esistenti.
 
-**Approval:** approved by the owner through ICH-588 (M0-03); the approval record is on that Linear issue.
+**Approvazione:** approvata dal proprietario tramite ICH-588 (M0-03); il record di approvazione è su quella issue di Linear.
