@@ -97,3 +97,11 @@ derivano sono in [`CLAUDE.md`](../CLAUDE.md).
     issue e senza PR, dopo una review Fable senza finding Critical o High (4 Medium e 13 Low,
     corretti tranne quello sotto). La traduzione di `.claude/rules/context7.md` chiude il finding
     F-16. Resta aperto: alcune coppie di termini non sono ancora allineate tra i file (F-08, Low).
+16. **2026-11-23 — Commenti nel codice in inglese.** Scelta dell'utente: i commenti nel codice
+    seguono la label `git:` del progetto Linear, come commit e PR; con `git:en` sono in inglese.
+    Motivo: il codice viaggia con commit e PR, e gli identificatori C e le API delle librerie
+    sono in inglese. Prima nessuna regola, né in AgentMux né in Trinity, copriva i commenti nel
+    codice. La regola sta nel punto «Lingua» della sezione «Regole» di `CLAUDE.md`; vale dal
+    primo codice, M0-04. Commit diretto su `main`, su istruzione dell'utente. La governance resta
+    `2.13-draft` per scelta dell'utente: la regola copre un caso nuovo e non cambia obblighi
+    esistenti. `2.13-draft` indica quindi il testo dei commit `944b51b` e di questo commit.

@@ -159,7 +159,8 @@ Dopo `issue-cycle` e dopo `4_review-fix-loop` controlla CP05 come al punto 5:
   `git:en` mette in inglese commit, PR e commenti sulla PR. Anche i messaggi `docs(ripresa)` sono
   in inglese. `CLAUDE.md`, `.claude/rules/`, `handoff.md`, `memory/`, `docs/` (ADR compresi) e
   `README.md` sono in italiano. `.github/pull_request_template.md` è il corpo della PR: segue la
-  label `git:`. Nei documenti non si traducono blocchi di codice, path, comandi e identificatori.
+  label `git:`. Anche i commenti nel codice seguono la label `git:`: con `git:en` sono in
+  inglese. Nei documenti non si traducono blocchi di codice, path, comandi e identificatori.
   I marcatori restano identici anche nei testi in italiano:
   «written by Claude Code on the owner's instruction», la prima riga del checkpoint
   `agentmux.handoff.v1` e l'inizio `**CP06 closure — ICH-XXX` della prima riga del commento di
