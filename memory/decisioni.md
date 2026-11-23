@@ -54,7 +54,7 @@ derivano sono in [`CLAUDE.md`](../CLAUDE.md).
     `$CLAUDE_PROJECT_DIR/handoff.md`. In una sessione avviata dentro il worktree di una issue
     indicherebbe la copia ferma al punto in cui è nato il branch (finding N10 della review Fable).
     Scelta dell'utente: lasciare l'hook com'è, perché le sessioni partono dalla root e `CLAUDE.md`
-    dice di leggere `handoff.md` solo da `<repo-root>`.
+    dice di leggere `handoff.md` solo da `<repo-root>`. Superata il 2026-11-23 dal punto 14.
 12. **2026-11-23 — Configurazione condivisa tra le macchine.** Scelta dell'utente:
     `hindsight.config.json` entra in Git, e il contenuto di `.claude/settings.local.json`
     (`enabledMcpjsonServers` con `context7`) passa in `.claude/settings.json`. Motivo: i due file
@@ -63,3 +63,27 @@ derivano sono in [`CLAUDE.md`](../CLAUDE.md).
     `.claude/settings.local.json` resta in `.gitignore` per le impostazioni di una sola macchina.
     Il cambio è solo di configurazione: `CLAUDE.md` e `docs/` non cambiano, quindi la governance
     resta `2.11-draft`. Commit diretto su `main`, su istruzione dell'utente.
+13. **2026-11-23 — Il reviewer indipendente non usa Hindsight; governance `2.12-draft`.** Scelta
+    dell'utente: il reviewer non usa Hindsight in nessun modo e legge solo la memoria in file nel
+    suo worktree di review, come ipotesi da controllare sul codice. I file di memoria che la PR
+    cambia fanno parte del changeset. Motivo: Hindsight non garantisce che il reviewer scarti le
+    memorie sulla PR in review. In Trinity la regola sta nel corpo di `agents/reviewer.md`
+    (commit `af2072b`, `f77d009` ed `e85f52b`): in Claude Code 2.1.330 una skill precaricata con
+    `skills:` non si può nascondere alla sessione principale. La review Fable ha mostrato che il
+    divieto esplicito serve, perché il reviewer può arrivare a Hindsight con la skill e `curl`. In
+    AgentMux la regola sta in §4, §7 e §13 di `docs/DEVELOPMENT_WORKFLOW.md`, in
+    `docs/specs/SESSION_CONTINUITY.md` e nella sezione «Memoria» di `CLAUDE.md`. Commit diretto su
+    `main` `62604aa`, su istruzione dell'utente, dopo una review Fable senza finding Critical o
+    High. `2.11-draft` indica il testo fino al commit `02097a2`.
+14. **2026-11-23 — L'hook `SessionStart` rimanda a «Ripresa del lavoro».** Il commit `02097a2`,
+    fatto dalla sessione di notcursesruby su richiesta dell'utente (lo dice quella sessione),
+    cambia il testo dell'hook: non fa più leggere `handoff.md` ed eseguire il prompt, ma rimanda
+    alla sezione «Ripresa del lavoro» di `CLAUDE.md`. Motivo, dal messaggio del commit: il prompt
+    di `handoff.md` saltava i controlli obbligatori che la sezione chiede prima di agire.
+    Condizione e matcher dell'hook non cambiano. `CLAUDE.md` descrive l'hook nuovo dal commit
+    `62604aa`.
+15. **2026-11-23 — Documenti in italiano.** Scelta dell'utente: tutti i documenti del repository
+    passano dall'inglese all'italiano, e le regole che li vogliono in inglese cambiano. Commit, PR
+    e commenti sulla PR restano nella lingua della label `git:` del progetto Linear (oggi
+    `git:en`, inglese). Cambia il punto 8 per i documenti. Da applicare: è il primo lavoro di
+    `handoff.md`.

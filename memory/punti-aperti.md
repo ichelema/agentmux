@@ -12,7 +12,8 @@ chiude, rimuovi la voce e registra l'esito in [storico.md](storico.md) o in
    commento di chiusura.
 2. **Scritture senza review lette alla ripresa (rischio F6, rinviato a M0-06).** Un agente può
    scrivere istruzioni in `handoff.md` e in `memory/` con un commit diretto, senza review. L'hook
-   di avvio fa leggere `handoff.md` alla ripresa, `CLAUDE.md` fa consultare `memory/` e ogni
+   di avvio rimanda a «Ripresa del lavoro» di `CLAUDE.md`, che fa leggere `handoff.md` alla
+   ripresa; `CLAUDE.md` fa consultare `memory/` e ogni
    sessione carica `.claude/` (hook e regole, per esempio `.claude/rules/context7.md`). La spec
    `spec-r2` di ICH-566 (OQ-9, approvata dall'utente) rinvia il finding e lo rende un input
    obbligatorio della spec di M0-06; la spec di ICH-588 lo ripete per `handoff.md` e `.claude/`.
@@ -24,3 +25,11 @@ chiude, rimuovi la voce e registra l'esito in [storico.md](storico.md) o in
    hanno usato `improvments`. L'utente decide il prefisso delle prossime issue.
 4. **Nota residua della review di ICH-588** (nessuna issue aperta). Parte del testo storico di
    `docs/BOOTSTRAP_PLAN.md` («Prerequisites», «Proposed M0 issue order») è superata.
+5. **Memoria scritta durante una issue (finding L3 della review Fable del 2026-11-23, Low).** Se
+   il branch di una issue viene riallineato a `main` dopo un commit `docs(ripresa)`, il worktree
+   di review contiene note di memoria scritte durante la issue, che il diff della PR non mostra.
+   La regola «i file di memoria che la PR cambia fanno parte del changeset» non le copre. Per
+   coprirle va cambiata la procedura di chiusura della sessione: decide l'utente.
+6. **`handoff.md` letto dal reviewer (nota della stessa review).** La sezione «Ripresa del
+   lavoro» di `CLAUDE.md` fa leggere `handoff.md` anche al reviewer indipendente, che salta solo
+   il punto 5. Il problema esisteva già prima di `2.12-draft`.
