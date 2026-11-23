@@ -5,8 +5,12 @@
 - **Linear:** team `ICH`, progetto **Agentmux**, label di progetto `lang:it` (issue in italiano) e
   `git:en` (commit e PR in inglese).
 - **GitHub:** `ichelema/agentmux`, pubblico. `main` non ha protezione né CI: arrivano con M0-06.
-- **Hindsight:** bank `agentmux`, tag `repo:agentmux` e `claude-code`. Il file locale
-  `hindsight.config.json` nella root è ignorato da Git.
+- **Hindsight:** bank `agentmux`, tag `repo:agentmux` e `claude-code`. Il file
+  `hindsight.config.json` nella root (mission, mental model e pagine di conoscenza del bank) è
+  tracciato da Git dal 2026-11-23, così vale uguale su ogni macchina.
+- **Claude Code:** `.claude/settings.json` (tracciato) contiene l'hook `SessionStart` e abilita il
+  server MCP `context7` di `.mcp.json`. `.claude/settings.local.json` resta in `.gitignore` per le
+  impostazioni di una sola macchina.
 
 ## Path
 

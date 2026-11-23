@@ -13,7 +13,6 @@ Testing/
 *.log
 .claude/worktrees/
 .claude/settings.local.json
-hindsight.config.json
 
 # Editors and platform
 .vscode/

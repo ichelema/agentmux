@@ -1,0 +1,40 @@
+{
+  "retain_mission": "Le conversazioni di questo progetto sono in italiano: estrai e scrivi OGNI fatto in italiano. Il progetto è agentmux: un multiplexer e orchestratore di sessioni di terminale per Linux, a livello applicativo, per gli agenti AI da riga di comando esistenti, con un demone PTY persistente (agentd, che possiede i PTY Linux e libghostty-vt) e un client interattivo in C17 su Notcurses (agentctl); toolchain C17 / CMake / Ninja. Il progetto è nel bootstrap M0 (issue M0-01, M0-02… di docs/BOOTSTRAP_PLAN.md) con governance in bozza (docs/DEVELOPMENT_WORKFLOW.md, docs/specs/SESSION_CONTINUITY.md). Lo sviluppo avviene su Linux (Arch Linux). Estrai fatti durevoli e riutilizzabili per le future sessioni su questo progetto. Dai priorità a: decisioni di architettura e di governance con le loro motivazioni e le alternative scartate (ADR, confini di fiducia, IPC e compatibilità, ownership di PTY e VT tra agentd e agentctl); decisioni e approvazioni dell'utente e le eccezioni che ha concesso; deviazioni e rischi aperti (con l'issue o la milestone che li risolve); comportamenti verificati di Linear, GitHub, CI e dei command di Trinity nel workflow (worktree, review indipendente, checkpoint agentmux.handoff.v1, handoff.md); lezioni apprese con causa radice e correzione; vincoli di build e test del codice C17; preferenze dell'utente. Preferisci fatti concreti e azionabili al riempitivo conversazionale. Quando un fatto contiene elementi tecnici (comandi shell, path di file, nomi di file/funzioni/tipi C, opzioni di CMake, flag e parametri, valori numerici, hash di commit, numeri di issue ICH-xxx e M0-xx, PR, variabili d'ambiente, o i passi di una procedura) PRESERVALI ALLA LETTERA: non parafrasarli, non abbreviarli, non ometterli. NON estrarre: segreti/token/API key/password, conversazioni complete, stato della issue in corso o checkpoint (la fonte è Linear), stato effimero della sessione, output grezzo dei tool, stack trace completi (tieni solo la causa radice), o qualsiasi cosa già ovvia dal codice, dai documenti del repository (docs/, ADR, CLAUDE.md) o dalla git history.",
+  "reflect_mission": "Fornisci memoria a lungo termine per Claude Code, un assistente di programmazione AI che lavora con l'utente (Ichelema) su agentmux, il multiplexer e orchestratore Linux di sessioni di terminale per agenti AI da riga di comando (demone agentd con PTY e libghostty-vt, client agentctl in C17 su Notcurses), oggi nel bootstrap M0 con governance in bozza, sviluppato su Linux (Arch Linux). Rispondi sempre in italiano. Sintetizza le memorie in indicazioni pratiche e ancorate al progetto: decisioni di architettura e di governance, approvazioni ed eccezioni dell'utente, rischi e deviazioni aperte, comportamenti di Linear, GitHub e dei command di Trinity nel workflow, lezioni apprese, preferenze dell'utente. Tratta la memoria come contesto consultivo, non come fonte di verità: per ogni fatto mutabile fai riferimento al repository (CLAUDE.md, docs/, handoff.md), alla issue e ai checkpoint in Linear e alla git history correnti. La memoria non vale mai come approvazione né come stato della issue.",
+  "observations_mission": "IMPORTANTE: scrivi OGNI observation in italiano. Consolida solo fatti DUREVOLI e azionabili del progetto agentmux: decisioni di architettura e di governance e loro motivazioni, approvazioni ed eccezioni concesse dall'utente, rischi e deviazioni aperte con l'issue o la milestone che li risolve, comportamenti verificati di Linear, GitHub, CI e dei command di Trinity, comandi che funzionano o falliscono, lezioni apprese con causa radice e correzione, vincoli di build e test del codice C17, preferenze dell'utente. Mantieni la precisione tecnica: riporta path esatti, nomi di file, funzioni e tipi C, comandi, numeri di issue ICH-xxx e M0-xx, PR, hash di commit e valori numerici senza arrotondare. Per i fatti che cambiano nel tempo (stato delle milestone, issue aperte, versione della governance, rischi rinviati), includi la data. NON consolidare meta-conversazione (es. 'l'assistente ha spiegato/descritto', 'l'utente ha chiesto'), né stato effimero della sessione o della issue in corso. Preferisci sempre i dettagli specifici alle astrazioni, non generalizzare mai.",
+  "mental_models": [
+    {
+      "id": "recurring-learnings",
+      "name": "Apprendimenti ricorrenti e criticità",
+      "source_query": "Quali errori ricorrenti, criticità, workaround e lezioni apprese sul campo si applicano ad agentmux e al suo workflow? Raggruppa per area (Linear e sue integrazioni, GitHub e PR, command e worktree di Trinity, review indipendente, handoff e checkpoint, build C17/CMake/Ninja, PTY e VT, Notcurses). Ogni voce nella forma 'sintomo -> correzione concreta (comando/file/regola)'. Max 15 voci totali. Niente introduzione, niente conclusione.",
+      "tags": ["claude-code"]
+    }
+  ],
+  "knowledge_pages": [
+    {
+      "name": "Feature Work",
+      "source_query": "Quali issue, milestone o iniziative sono in corso o pianificate in agentmux (bootstrap M0 di docs/BOOTSTRAP_PLAN.md, architettura di base, protezione del branch e CI, agentd, agentctl, IPC)? Per ogni voce indica: obiettivo, issue Linear o milestone se note, stato attuale, decisioni aperte. Escludi bug-fix, chore e manutenzione ordinaria. Max 15 voci, una riga ciascuna. Niente introduzione, niente conclusione.",
+      "tags": ["knowledge:feature-work"]
+    },
+    {
+      "name": "Decisions",
+      "source_query": "Quali decisioni vincolanti sono state prese in agentmux, e perché (per esempio C17 con CMake e Ninja, agentd proprietario dei PTY e di libghostty-vt, agentctl su Notcurses, regole di governance, WIP=1, review indipendente, eccezione dei commit diretti di handoff.md, approvazioni dell'utente)? Per ogni voce indica: la scelta fatta, le alternative scartate, la motivazione. Max 15 voci, una riga ciascuna. Niente introduzione, niente conclusione.",
+      "tags": ["knowledge:decision"]
+    },
+    {
+      "name": "Conventions",
+      "source_query": "Quali convenzioni operative segue agentmux? Branch e worktree, messaggi di commit e corpo delle PR (lingua, parole magiche di Linear, riga Related), checkpoint e handoff.md, cicli di review, struttura dei documenti in docs/, lingua di documenti e handoff, workflow per issue Linear. Per ogni voce indica: ambito -> regola concreta (con esempio se utile). Max 15 voci, una riga ciascuna. Niente introduzione, niente conclusione.",
+      "tags": ["knowledge:convention"]
+    },
+    {
+      "name": "Components",
+      "source_query": "Quali sono i componenti e i documenti principali di agentmux (agentd, agentctl, IPC, libghostty-vt, Notcurses, docs/ARCHITECTURE.md, docs/DEVELOPMENT_WORKFLOW.md, docs/specs/SESSION_CONTINUITY.md, docs/BOOTSTRAP_PLAN.md, handoff.md)? Per ciascuno indica: responsabilità, dipendenze chiave, come si collega agli altri. Max 15 voci, una riga ciascuna. Niente introduzione, niente conclusione.",
+      "tags": ["knowledge:component"]
+    },
+    {
+      "name": "Concepts",
+      "source_query": "Quali concetti di agentmux e della sua governance deve conoscere un nuovo contributore (per esempio sessione persistente, PTY e VT, confini di fiducia, WIP=1, checkpoint agentmux.handoff.v1, review indipendente, approvazione del proprietario, milestone M0)? Per ogni voce indica: termine -> definizione concreta e dove si usa. Max 15 voci, una riga ciascuna. Niente introduzione, niente conclusione.",
+      "tags": ["knowledge:concept"]
+    }
+  ]
+}

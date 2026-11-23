@@ -21,7 +21,7 @@ derivano sono in [`CLAUDE.md`](../CLAUDE.md).
    giorno l'hook `SessionStart` smette di iniettare il file e lo indica soltanto (commit
    `315a842`).
 6. **2026-11-22 — `hindsight.config.json` resta fuori dal repository** ed è in `.gitignore` (OQ-2
-   di ICH-588): è un file locale.
+   di ICH-588): è un file locale. Superata il 2026-11-23 dal punto 12.
 7. **2026-11-22 — Riordino dei documenti di sessione.** `handoff.md` contiene solo il prossimo
    passo. Storia, decisioni, insidie e punti aperti stanno in `memory/`, con l'indice
    `memory/memory.md`. `CLAUDE.md` contiene solo struttura, ripresa, workflow, regole, memoria e
@@ -55,3 +55,11 @@ derivano sono in [`CLAUDE.md`](../CLAUDE.md).
     indicherebbe la copia ferma al punto in cui è nato il branch (finding N10 della review Fable).
     Scelta dell'utente: lasciare l'hook com'è, perché le sessioni partono dalla root e `CLAUDE.md`
     dice di leggere `handoff.md` solo da `<repo-root>`.
+12. **2026-11-23 — Configurazione condivisa tra le macchine.** Scelta dell'utente:
+    `hindsight.config.json` entra in Git, e il contenuto di `.claude/settings.local.json`
+    (`enabledMcpjsonServers` con `context7`) passa in `.claude/settings.json`. Motivo: i due file
+    servono anche sulle altre macchine. Prima del commit il controllo non ha trovato segreti. Il
+    repository è pubblico: in questi file non vanno mai segreti o dati personali.
+    `.claude/settings.local.json` resta in `.gitignore` per le impostazioni di una sola macchina.
+    Il cambio è solo di configurazione: `CLAUDE.md` e `docs/` non cambiano, quindi la governance
+    resta `2.11-draft`. Commit diretto su `main`, su istruzione dell'utente.
