@@ -35,3 +35,9 @@ chiude, rimuovi la voce e registra l'esito in [storico.md](storico.md) o in
 6. **`handoff.md` letto dal reviewer (nota della stessa review).** La sezione «Ripresa del
    lavoro» di `CLAUDE.md` fa leggere `handoff.md` anche al reviewer indipendente, che salta solo
    il punto 5. Il problema esisteva già prima di `2.12-draft`.
+7. **Termini non allineati nei documenti tradotti (finding F-08 della review Fable del
+   2026-11-23, Low).** Alcune coppie traducono lo stesso concetto in modi diversi: «gotcha» e
+   «tranelli tecnici» sono già allineati, restano per esempio «provisioning» contro
+   «predisporre», «merge e release» contro «merge e rilascio», «M0 a fasi» contro «Bootstrap
+   graduale di M0», «safety» contro «sicurezza». Anche `.claude/rules/context7.md`, tradotto dopo
+   la review, non ha avuto una review. Si può correggere in una issue di documenti successiva.
