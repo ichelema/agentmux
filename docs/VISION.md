@@ -1,6 +1,6 @@
 # AgentMux — Product Vision
 
-**Status:** authoritative product vision, part of the owner-approved architecture baseline of ICH-588 (M0-03), under `governance 2.11-draft`. Changes follow `docs/DEVELOPMENT_WORKFLOW.md` §3.
+**Status:** authoritative product vision, part of the owner-approved architecture baseline of ICH-588 (M0-03), under `governance 2.12-draft`. Changes follow `docs/DEVELOPMENT_WORKFLOW.md` §3.
 
 ## Purpose
 

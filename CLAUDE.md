@@ -5,7 +5,7 @@ Linux. Architettura e toolchain sono in `docs/ARCHITECTURE.md`. Il progetto è n
 (`docs/BOOTSTRAP_PLAN.md`): M0 non implementa PTY, `libghostty-vt`, Notcurses o SSH
 (`docs/DEVELOPMENT_WORKFLOW.md` §11).
 
-**Stato:** governance `2.11-draft`, tracciata nel repository, **non** congelata.
+**Stato:** governance `2.12-draft`, tracciata nel repository, **non** congelata.
 
 **Fonti di verità:** Git per il codice e per i documenti del repository (`docs/`, ADR,
 governance); Linear (team `ICH`, progetto Agentmux) per la issue, la spec e il piano approvati, le
@@ -16,7 +16,7 @@ consigli da controllare su queste fonti.
 
 `<repo-root>` è il checkout di `main`: `/mnt/data/Sviluppo/Progetti/Personali/20261120_agentmux`.
 Leggi e scrivi `handoff.md` e `memory/` solo lì: le copie nei worktree delle issue sono ferme al
-punto in cui è nato il branch.
+punto in cui è nato il branch. Il reviewer indipendente fa eccezione (sezione «Memoria»).
 
 | Path | Contenuto |
 |---|---|
@@ -28,7 +28,7 @@ punto in cui è nato il branch.
 | `docs/VISION.md`, `docs/REQUIREMENTS.md` | Visione e requisiti del prodotto |
 | `docs/security/THREAT_MODEL.md` | Confini di fiducia e controlli minimi |
 | `docs/BOOTSTRAP_PLAN.md` | Ordine delle issue di M0 |
-| `.claude/settings.json` | Hook `SessionStart` che indica `handoff.md` |
+| `.claude/settings.json` | Hook `SessionStart` che rimanda a «Ripresa del lavoro» |
 | `.claude/rules/context7.md` | Quando e come usare Context7 |
 | `.mcp.json` | Server MCP del progetto (Context7) |
 | `.claude/worktrees/` | Worktree delle issue e delle review, ignorati da Git |
@@ -36,7 +36,7 @@ punto in cui è nato il branch.
 
 ## Ripresa del lavoro
 
-A ogni avvio e dopo `/clear` l'hook `SessionStart` indica `handoff.md`. L'utente riprende con
+A ogni avvio e dopo `/clear` l'hook `SessionStart` rimanda a questa sezione. L'utente riprende con
 «riprendi»; senza hook scrive «Leggi handoff.md ed esegui il prompt». Leggi
 `<repo-root>/handoff.md` per intero: dice cosa fare. Prima di agire esegui questi controlli,
 obbligatori a inizio sessione (algoritmo completo in `docs/specs/SESSION_CONTINUITY.md`):
@@ -171,6 +171,8 @@ Dopo `issue-cycle` e dopo `4_review-fix-loop` controlla CP05 come al punto 5:
 - Leggi l'indice `<repo-root>/memory/memory.md`, poi apri solo i file che servono al lavoro.
 - Se Hindsight è disponibile, fai un `recall` mirato (tag `repo:agentmux`) per i componenti che
   tocchi. Se non risponde, prosegui e dillo.
+- Il reviewer indipendente fa eccezione alle due righe sopra: non usa Hindsight e legge la memoria
+  solo nel suo worktree di review (`docs/DEVELOPMENT_WORKFLOW.md` §7).
 - Controlla ogni fatto della memoria su Git, Linear e `docs/` prima di usarlo.
 - In `memory/` scrivi solo fatti controllati e durevoli, in italiano: decisioni dell'utente con il
   motivo, cause radice e correzioni, fatti d'ambiente, punti aperti, issue chiuse.

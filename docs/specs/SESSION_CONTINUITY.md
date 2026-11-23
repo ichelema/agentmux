@@ -1,6 +1,6 @@
 # Session continuity and resumable agent execution
 
-**Status:** part of `governance 2.11-draft`; operational specification exercised in the pilot ICH-548, not yet automated. This protocol is mandatory for starting a new agent session. An independent reviewer follows `docs/DEVELOPMENT_WORKFLOW.md` §4 instead: it does not read checkpoint comments (step 4).
+**Status:** part of `governance 2.12-draft`; operational specification exercised in the pilot ICH-548, not yet automated. This protocol is mandatory for starting a new agent session. An independent reviewer follows `docs/DEVELOPMENT_WORKFLOW.md` §4 instead: it does not read checkpoint comments (step 4).
 
 ## What survives between sessions
 
@@ -18,7 +18,7 @@ Do **not** assume ChatGPT/agent conversational memory, hidden chain of thought, 
 2. Read `CLAUDE.md`, relevant workflow and architecture sections. Read spec revision and separately approved plan revision from Linear; confirm governance version pinned at start.
 3. Verify actual repository and worktree: location, branch, `HEAD`, `git status`, untracked/uncommitted work, remote divergence, outstanding cherry-pick/rebase/merge. Verify issue/branch linkage.
 4. Read last checkpoint and PR/CI state, and cross-check it against actual Git and Linear. Treat mismatches as potential recovery blockers; do not overwrite newer work. An independent reviewer reads only the PR/CI state, not the checkpoint.
-5. Load relevant ADR/contracts/test scope; make targeted Hindsight `recall` queries based on issue/component. Verify retrieved facts against source.
+5. Load relevant ADR/contracts/test scope; make targeted Hindsight `recall` queries based on issue/component. Verify retrieved facts against source. An independent reviewer makes no Hindsight queries (`docs/DEVELOPMENT_WORKFLOW.md` §7).
 6. Determine exact checkpoint (CP01–CP06), consumed correction/review counts and permitted next action. Check whether previous side-effect operations already happened before retrying.
 7. Produce short resume assessment: verified state; remaining AC/finding; next operation; pending human gate. Execute only if all required approvals and safety checks hold.
 
@@ -33,7 +33,7 @@ schema: agentmux.handoff.v1
 issue: ICH-XXX
 checkpoint: CP03
 phase: implementation
-governance_version: 2.11-draft
+governance_version: 2.12-draft
 spec_revision: "<approved-revision-id>"
 plan_revision: "<approved-revision-id>"
 branch: improvments/ICH-XXX-opus
@@ -67,7 +67,7 @@ Values are **illustrative**. Do not report checks as passed unless measured, and
 - Keep review finding IDs and cycle counter stable across agent restarts; keep recovery counters tied to root cause.
 - Verification must precede execution when the last handoff may be stale.
 - If prior agent disappeared mid-mutation (PR creation, Linear edit), inspect remote state to avoid duplicates.
-- A reviewer starts from a **separate** clean context and independently reads the canonical spec, approved plan, approval records, diff, test evidence and Hindsight (if available); it must not receive implementer's conversational scratchpad and does not read checkpoint comments (marker line above).
+- A reviewer starts from a **separate** clean context and independently reads the canonical spec, approved plan, approval records, diff, test evidence and the file memory (`memory/`) in its review worktree; it does not use Hindsight, must not receive implementer's conversational scratchpad and does not read checkpoint comments (marker line above).
 - Hindsight may help recover technical gotchas but **must not** serve as the checkpoint database or a mechanism to bypass issue approvals.
 
 ## Planned automation vs available today
