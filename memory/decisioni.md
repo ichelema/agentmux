@@ -72,7 +72,7 @@ derivano sono in [`CLAUDE.md`](../CLAUDE.md).
     (commit `af2072b`, `f77d009` ed `e85f52b`): in Claude Code 2.1.330 una skill precaricata con
     `skills:` non si può nascondere alla sessione principale. La review Fable ha mostrato che il
     divieto esplicito serve, perché il reviewer può arrivare a Hindsight con la skill e `curl`. In
-    AgentMux la regola sta in §4, §7 e §13 di `docs/DEVELOPMENT_WORKFLOW.md`, in
+    Ethereal la regola sta in §4, §7 e §13 di `docs/DEVELOPMENT_WORKFLOW.md`, in
     `docs/specs/SESSION_CONTINUITY.md` e nella sezione «Memoria» di `CLAUDE.md`. Commit diretto su
     `main` `62604aa`, su istruzione dell'utente, dopo una review Fable senza finding Critical o
     High. `2.11-draft` indica il testo fino al commit `02097a2`.
@@ -100,8 +100,17 @@ derivano sono in [`CLAUDE.md`](../CLAUDE.md).
 16. **2026-11-23 — Commenti nel codice in inglese.** Scelta dell'utente: i commenti nel codice
     seguono la label `git:` del progetto Linear, come commit e PR; con `git:en` sono in inglese.
     Motivo: il codice viaggia con commit e PR, e gli identificatori C e le API delle librerie
-    sono in inglese. Prima nessuna regola, né in AgentMux né in Trinity, copriva i commenti nel
+    sono in inglese. Prima nessuna regola, né in Ethereal né in Trinity, copriva i commenti nel
     codice. La regola sta nel punto «Lingua» della sezione «Regole» di `CLAUDE.md`; vale dal
     primo codice, M0-04. Commit diretto su `main`, su istruzione dell'utente. La governance resta
     `2.13-draft` per scelta dell'utente: la regola copre un caso nuovo e non cambia obblighi
     esistenti. `2.13-draft` indica quindi il testo dei commit `944b51b` e di questo commit.
+17. **2026-11-28 — Il progetto AgentMux diventa Ethereal.** Scelta dell'utente. Negli
+    identificatori il nome è `Ethereal` con la maiuscola: repository GitHub `ichelema/Ethereal`,
+    bank Hindsight `Ethereal`, tag `repo:Ethereal`, progetto Linear «Ethereal». Lo shim di
+    Hindsight ricava il bank dal nome del remote `origin` e mantiene la maiuscola. La cartella
+    diventa `20261120_ethereal`. Cambiano anche il marcatore `agentmux.handoff.v1` →
+    `ethereal.handoff.v1` e `.agentmux-local/` → `.ethereal-local/`; i componenti `agentd` e
+    `agentctl` restano invariati. Le issue Done conservano titoli e testi storici con il nome
+    vecchio, e i loro checkpoint usano il marcatore vecchio. Commit diretto su `main`, su
+    istruzione dell'utente; la governance passa a `2.14-draft`.

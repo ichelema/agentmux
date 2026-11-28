@@ -1,6 +1,6 @@
 # Indice della memoria
 
-Memoria persistente del progetto AgentMux: i fatti durevoli che servono a più sessioni. Ogni file
+Memoria persistente del progetto Ethereal: i fatti durevoli che servono a più sessioni. Ogni file
 tratta un solo tema: apri solo quelli che servono al lavoro. Le regole per leggere e scrivere la
 memoria sono nella sezione «Memoria» di [`CLAUDE.md`](../CLAUDE.md).
 

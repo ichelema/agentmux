@@ -7,7 +7,7 @@ compile_commands.json
 Testing/
 
 # Local transient workflow / sensitive state
-.agentmux-local/
+.ethereal-local/
 .env
 .env.*
 *.log

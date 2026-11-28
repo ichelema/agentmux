@@ -1,6 +1,6 @@
 # Continuità della sessione ed esecuzione ripristinabile dell'agente
 
-**Stato:** parte di `governance 2.13-draft`; specifica operativa esercitata nel pilota ICH-548, non ancora automatizzata. Questo protocollo è obbligatorio per avviare una nuova sessione dell'agente. Un reviewer indipendente segue invece `docs/DEVELOPMENT_WORKFLOW.md` §4: non legge i commenti di checkpoint (punto 4).
+**Stato:** parte di `governance 2.14-draft`; specifica operativa esercitata nel pilota ICH-548, non ancora automatizzata. Questo protocollo è obbligatorio per avviare una nuova sessione dell'agente. Un reviewer indipendente segue invece `docs/DEVELOPMENT_WORKFLOW.md` §4: non legge i commenti di checkpoint (punto 4).
 
 ## Cosa sopravvive tra le sessioni
 
@@ -24,16 +24,16 @@
 
 ## Checkpoint di fine sessione / interruzione
 
-Registra quando: si raggiunge un checkpoint, la sessione sta per finire, il contesto è saturo, un errore di un tool richiede la sostituzione dell'agente o della sessione, c'è un blocco o un passaggio alla review. Preferisci un commento sulla issue o uno stato strutturato su Linear, collegato al commit e alla PR. La prima riga di ogni commento di checkpoint dell'implementer è esattamente `**Implementer checkpoint (agentmux.handoff.v1) — reviewers do not read this comment.**`; i reviewer saltano ogni commento che inizia con questa riga marcatore. Facoltativamente usa un handoff locale effimero per comodità, mai come unica copia.
+Registra quando: si raggiunge un checkpoint, la sessione sta per finire, il contesto è saturo, un errore di un tool richiede la sostituzione dell'agente o della sessione, c'è un blocco o un passaggio alla review. Preferisci un commento sulla issue o uno stato strutturato su Linear, collegato al commit e alla PR. La prima riga di ogni commento di checkpoint dell'implementer è esattamente `**Implementer checkpoint (ethereal.handoff.v1) — reviewers do not read this comment.**`; i reviewer saltano ogni commento che inizia con questa riga marcatore. Facoltativamente usa un handoff locale effimero per comodità, mai come unica copia.
 
 Registrazione minima:
 
 ```yaml
-schema: agentmux.handoff.v1
+schema: ethereal.handoff.v1
 issue: ICH-XXX
 checkpoint: CP03
 phase: implementation
-governance_version: 2.13-draft
+governance_version: 2.14-draft
 spec_revision: "<approved-revision-id>"
 plan_revision: "<approved-revision-id>"
 branch: improvments/ICH-XXX-opus

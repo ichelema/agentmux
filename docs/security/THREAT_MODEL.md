@@ -1,6 +1,6 @@
-# Modello delle minacce di AgentMux — baseline
+# Modello delle minacce di Ethereal — baseline
 
-**Stato:** parte della baseline di architettura approvata dal proprietario con ICH-588 (M0-03), sotto `governance 2.13-draft`. Le modifiche seguono `docs/DEVELOPMENT_WORKFLOW.md` §3.
+**Stato:** parte della baseline di architettura approvata dal proprietario con ICH-588 (M0-03), sotto `governance 2.14-draft`. Le modifiche seguono `docs/DEVELOPMENT_WORKFLOW.md` §3.
 
 Modellazione basata sul rischio. Riesamina i confini quando cambiano IPC/SSH, credenziali, proprietà del PTY, parsing del terminale, privilegi, dipendenze o superfici sensibili.
 

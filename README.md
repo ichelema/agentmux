@@ -1,8 +1,8 @@
-# AgentMux
+# Ethereal
 
-**Stato:** `governance 2.13-draft`, non congelata. Questo repository **non** è un progetto implementato.
+**Stato:** `governance 2.14-draft`, non congelata. Questo repository **non** è un progetto implementato.
 
-AgentMux è un multiplexer e orchestratore di sessioni di terminale per Linux, a livello di applicazione, per gli agent AI da CLI esistenti, con un daemon PTY persistente e un client Notcurses in C17.
+Ethereal è un multiplexer e orchestratore di sessioni di terminale per Linux, a livello di applicazione, per gli agent AI da CLI esistenti, con un daemon PTY persistente e un client Notcurses in C17.
 
 Non esistono ancora codice, CI, test né protezione dei branch.
 

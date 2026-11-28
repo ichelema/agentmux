@@ -20,7 +20,7 @@ Problemi già incontrati: sintomo, causa, correzione. Le regole che ne derivano 
 4. **File non tracciati e fast-forward di `main` (M0-02).** Le copie seed non tracciate nel
    checkout principale bloccavano il fast-forward dopo un merge che aggiungeva gli stessi file.
    Correzione: niente `git pull` e niente forzature. Sposta le copie in
-   `~/.claude/tmp/agentmux-seed-bak/<issue>/` solo con il consenso dell'utente, che vale per una
+   `~/.claude/tmp/ethereal-seed-bak/<issue>/` solo con il consenso dell'utente, che vale per una
    volta (per M0-02 l'ha dato il 2026-11-20); poi esegui `git fetch` e `git merge --ff-only`. Dopo
    M0-03 il checkout principale non ha più copie seed.
 5. **Apostrofi nell'hook di avvio.** Il comando dell'hook `SessionStart` in `.claude/settings.json`

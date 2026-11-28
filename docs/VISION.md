@@ -1,10 +1,10 @@
-# AgentMux — Visione del prodotto
+# Ethereal — Visione del prodotto
 
-**Stato:** visione del prodotto che fa fede, parte della baseline di architettura approvata dal proprietario con ICH-588 (M0-03), sotto `governance 2.13-draft`. Le modifiche seguono `docs/DEVELOPMENT_WORKFLOW.md` §3.
+**Stato:** visione del prodotto che fa fede, parte della baseline di architettura approvata dal proprietario con ICH-588 (M0-03), sotto `governance 2.14-draft`. Le modifiche seguono `docs/DEVELOPMENT_WORKFLOW.md` §3.
 
 ## Scopo
 
-AgentMux è un gestore leggero di sessioni di terminale, pensato per Linux. Serve a far funzionare strumenti CLI interattivi esistenti e, più avanti, a orchestrare agent AI di programmazione esistenti. Separa i processi di terminale di lunga durata dalla loro interfaccia utente, così le sessioni locali o remote possono continuare quando il client si disconnette.
+Ethereal è un gestore leggero di sessioni di terminale, pensato per Linux. Serve a far funzionare strumenti CLI interattivi esistenti e, più avanti, a orchestrare agent AI di programmazione esistenti. Separa i processi di terminale di lunga durata dalla loro interfaccia utente, così le sessioni locali o remote possono continuare quando il client si disconnette.
 
 ## Principi fondamentali
 
@@ -43,7 +43,7 @@ AgentMux è un gestore leggero di sessioni di terminale, pensato per Linux. Serv
 
 ## Confini del perimetro e riferimenti che fanno fede
 
-Questo documento definisce **perché** AgentMux esiste e che cosa vuole ottenere. `docs/REQUIREMENTS.md` definisce i requisiti; `docs/ARCHITECTURE.md` definisce l'architettura; gli ADR approvati documentano le decisioni architetturali; `docs/DEVELOPMENT_WORKFLOW.md` definisce la governance dello sviluppo; Linear contiene i criteri di accettazione specifici di ogni issue e i piani approvati. I conflitti richiedono una risoluzione umana, non ipotesi unilaterali degli agenti.
+Questo documento definisce **perché** Ethereal esiste e che cosa vuole ottenere. `docs/REQUIREMENTS.md` definisce i requisiti; `docs/ARCHITECTURE.md` definisce l'architettura; gli ADR approvati documentano le decisioni architetturali; `docs/DEVELOPMENT_WORKFLOW.md` definisce la governance dello sviluppo; Linear contiene i criteri di accettazione specifici di ogni issue e i piani approvati. I conflitti richiedono una risoluzione umana, non ipotesi unilaterali degli agenti.
 
 ## Direzione delle milestone
 

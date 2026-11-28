@@ -1,20 +1,20 @@
-# AgentMux: istruzioni per l'agente
+# Ethereal: istruzioni per l'agente
 
-AgentMux è un multiplexer e orchestratore di sessioni di terminale per gli agent AI da CLI, su
+Ethereal è un multiplexer e orchestratore di sessioni di terminale per gli agent AI da CLI, su
 Linux. Architettura e toolchain sono in `docs/ARCHITECTURE.md`. Il progetto è nel bootstrap M0
 (`docs/BOOTSTRAP_PLAN.md`): M0 non implementa PTY, `libghostty-vt`, Notcurses o SSH
 (`docs/DEVELOPMENT_WORKFLOW.md` §11).
 
-**Stato:** governance `2.13-draft`, tracciata nel repository, **non** congelata.
+**Stato:** governance `2.14-draft`, tracciata nel repository, **non** congelata.
 
 **Fonti di verità:** Git per il codice e per i documenti del repository (`docs/`, ADR,
-governance); Linear (team `ICH`, progetto Agentmux) per la issue, la spec e il piano approvati, le
+governance); Linear (team `ICH`, progetto Ethereal) per la issue, la spec e il piano approvati, le
 approvazioni e lo stato; GitHub per le prove di PR e CI. `handoff.md`, `memory/` e Hindsight sono
 consigli da controllare su queste fonti.
 
 ## Struttura del repository
 
-`<repo-root>` è il checkout di `main`: `/mnt/data/Sviluppo/Progetti/Personali/20261120_agentmux`.
+`<repo-root>` è il checkout di `main`: `/mnt/data/Sviluppo/Progetti/Personali/20261120_ethereal`.
 Leggi e scrivi `handoff.md` e `memory/` solo lì: le copie nei worktree delle issue sono ferme al
 punto in cui è nato il branch. Il reviewer indipendente fa eccezione (sezione «Memoria»).
 
@@ -23,7 +23,7 @@ punto in cui è nato il branch. Il reviewer indipendente fa eccezione (sezione �
 | `handoff.md` | Cosa fa la prossima sessione, nient'altro |
 | `memory/` | Memoria persistente del progetto; indice in `memory/memory.md` |
 | `docs/DEVELOPMENT_WORKFLOW.md` | Governance: gate CP01–CP06, ruoli, review, limiti dei tentativi |
-| `docs/specs/SESSION_CONTINUITY.md` | Ripresa e checkpoint `agentmux.handoff.v1` su Linear |
+| `docs/specs/SESSION_CONTINUITY.md` | Ripresa e checkpoint `ethereal.handoff.v1` su Linear |
 | `docs/ARCHITECTURE.md`, `docs/adr/` | Baseline di architettura e ADR |
 | `docs/VISION.md`, `docs/REQUIREMENTS.md` | Visione e requisiti del prodotto |
 | `docs/security/THREAT_MODEL.md` | Confini di fiducia e controlli minimi |
@@ -42,16 +42,16 @@ A ogni avvio e dopo `/clear` l'hook `SessionStart` rimanda a questa sezione. L'u
 obbligatori a inizio sessione (algoritmo completo in `docs/specs/SESSION_CONTINUITY.md`):
 
 1. Trova la issue di lavoro. È la issue che `handoff.md` o l'utente indicano, oppure una issue di
-   Agentmux che:
+   Ethereal che:
    - è In Progress o In Review;
-   - è in Backlog o Todo con un checkpoint `agentmux.handoff.v1` o con il record di approvazione
+   - è in Backlog o Todo con un checkpoint `ethereal.handoff.v1` o con il record di approvazione
      della sua spec (CP01) o del suo piano (CP02): è tra la specifica e l'implementazione;
    - è la issue dell'ultima PR mergiata e non ha ancora il commento di chiusura CP06. Elenca le PR
      con il comando qui sotto e prendi quella con `mergedAt` più recente: l'ID della issue è nel
      nome del branch.
 
      ```bash
-     gh pr list -R ichelema/agentmux --state merged --limit 100 --json number,headRefName,mergedAt
+     gh pr list -R ichelema/Ethereal --state merged --limit 100 --json number,headRefName,mergedAt
      ```
 
    Lo slot WIP lo liberano solo il commento CP06 o una sospensione autorizzata dall'utente, non il
@@ -63,7 +63,7 @@ obbligatori a inizio sessione (algoritmo completo in `docs/specs/SESSION_CONTINU
    piano (CP02), il prossimo passo è quel gate.
 4. Controlla lo stato reale di Git: `git status`, branch, `HEAD`, worktree, remoto, PR e CI. Git
    vale più di qualsiasi handoff.
-5. Leggi l'ultimo checkpoint `agentmux.handoff.v1` della issue e confronta ogni sua affermazione
+5. Leggi l'ultimo checkpoint `ethereal.handoff.v1` della issue e confronta ogni sua affermazione
    con Git, PR, CI e Linear. Se coincidono, il prossimo passo è il suo `next_allowed_action`.
    Prima di ripetere un'operazione interrotta (creazione della PR, modifica su Linear), controlla
    se è già avvenuta. Se `handoff.md` e Linear non coincidono, vale Linear per lo stato della
@@ -149,7 +149,7 @@ Dopo `issue-cycle` e dopo `4_review-fix-loop` controlla CP05 come al punto 5:
   avviano entrambe un subagente e scelgono solo il modello. Il read-only è una procedura, non un
   controllo tecnico. Massimo tre cicli ordinari di review per issue. I finding Critical/High
   aperti bloccano il merge; approvazione e merge spettano all'utente.
-- Scrivi un checkpoint `agentmux.handoff.v1` sulla issue a ogni checkpoint CP01–CP06, prima di
+- Scrivi un checkpoint `ethereal.handoff.v1` sulla issue a ogni checkpoint CP01–CP06, prima di
   chiudere la sessione, a contesto quasi pieno e su un blocco (formato in
   `docs/specs/SESSION_CONTINUITY.md`).
 - Scrivi su Linear dalla sessione principale con `linear.py`: il classificatore dei permessi può
@@ -163,7 +163,7 @@ Dopo `issue-cycle` e dopo `4_review-fix-loop` controlla CP05 come al punto 5:
   inglese. Nei documenti non si traducono blocchi di codice, path, comandi e identificatori.
   I marcatori restano identici anche nei testi in italiano:
   «written by Claude Code on the owner's instruction», la prima riga del checkpoint
-  `agentmux.handoff.v1` e l'inizio `**CP06 closure — ICH-XXX` della prima riga del commento di
+  `ethereal.handoff.v1` e l'inizio `**CP06 closure — ICH-XXX` della prima riga del commento di
   chiusura.
 - Usa una parola magica di Linear, di chiusura (`Fixes`, `Closes`, `Resolves`…) o di collegamento
   (`Refs`, `Part of`, `Related to`…), solo con l'ID della issue attiva. Nel titolo della PR e nei
@@ -177,7 +177,7 @@ Dopo `issue-cycle` e dopo `4_review-fix-loop` controlla CP05 come al punto 5:
 ## Memoria
 
 - Leggi l'indice `<repo-root>/memory/memory.md`, poi apri solo i file che servono al lavoro.
-- Se Hindsight è disponibile, fai un `recall` mirato (tag `repo:agentmux`) per i componenti che
+- Se Hindsight è disponibile, fai un `recall` mirato (tag `repo:Ethereal`) per i componenti che
   tocchi. Se non risponde, prosegui e dillo.
 - Il reviewer indipendente fa eccezione alle due righe sopra: non usa Hindsight e legge la memoria
   solo nel suo worktree di review (`docs/DEVELOPMENT_WORKFLOW.md` §7).
@@ -203,7 +203,7 @@ Esegui questa procedura quando l'utente chiude la sessione, dopo ogni merge (la 
    ammessi solo commit `docs(ripresa)` che toccano solo `handoff.md` e `memory/`. Se un controllo
    o il fast-forward fallisce, salta i punti 4–7: scrivi solo il checkpoint del punto 3 e segnala
    il blocco.
-3. Se una issue è attiva, scrivi il suo checkpoint `agentmux.handoff.v1` su Linear quando non c'è
+3. Se una issue è attiva, scrivi il suo checkpoint `ethereal.handoff.v1` su Linear quando non c'è
    un merge, oppure quando CP06 non si può completare ora (per esempio manca `5_remove-worktree`):
    resta il punto di ripresa.
 4. Dopo un merge completa CP06 prima del resto. Se il commento di chiusura esiste già, non
@@ -232,4 +232,4 @@ Esegui questa procedura quando l'utente chiude la sessione, dopo ogni merge (la 
    `git -C <repo-root> diff --cached --name-only` che lo stage contenga solo loro. Committa con
    messaggio `docs(ripresa): ...` ed esegui `git -C <repo-root> push origin main`.
 8. Se Hindsight è disponibile, salva con `retain` le decisioni e le cause radice controllate (tag
-   `claude-code`, `repo:agentmux`).
+   `claude-code`, `repo:Ethereal`).

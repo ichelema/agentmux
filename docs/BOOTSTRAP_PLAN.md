@@ -1,6 +1,6 @@
 # Bootstrap graduale di M0 e pilota controllato
 
-**Stato:** in corso. GitHub (`ichelema/agentmux`) e Linear (team ICH, progetto Agentmux) sono predisposti; la protezione dei branch e la CI non esistono ancora (M0-06).
+**Stato:** in corso. GitHub (`ichelema/Ethereal`) e Linear (team ICH, progetto Ethereal) sono predisposti; la protezione dei branch e la CI non esistono ancora (M0-06).
 
 ## Prerequisiti (di responsabilità umana)
 

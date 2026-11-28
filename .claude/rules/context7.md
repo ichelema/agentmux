@@ -19,7 +19,7 @@ Per libghostty salta `resolve-library-id` e usa questo ID:
   riferimento per la C API di `libghostty-vt` — funzioni, parametri, tipi ed esempi.
 
 Questa fonte documenta la versione `tip` (di sviluppo) di Ghostty. La sua API può essere diversa
-dalla versione che AgentMux fissa. Quando il progetto fissa una versione di `libghostty-vt`, gli
+dalla versione che Ethereal fissa. Quando il progetto fissa una versione di `libghostty-vt`, gli
 header della versione fissata fanno fede: se Context7 e gli header fissati non coincidono, vincono
 gli header.
 

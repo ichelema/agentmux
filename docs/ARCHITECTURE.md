@@ -1,6 +1,6 @@
-# Architettura di AgentMux — baseline di progetto concordata
+# Architettura di Ethereal — baseline di progetto concordata
 
-**Stato:** deriva dalle decisioni di pianificazione; fa parte della baseline di architettura approvata dal proprietario con ICH-588 (M0-03), sotto `governance 2.13-draft`. L'evoluzione dell'architettura segue §3 di `docs/DEVELOPMENT_WORKFLOW.md` e gli ADR approvati.
+**Stato:** deriva dalle decisioni di pianificazione; fa parte della baseline di architettura approvata dal proprietario con ICH-588 (M0-03), sotto `governance 2.14-draft`. L'evoluzione dell'architettura segue §3 di `docs/DEVELOPMENT_WORKFLOW.md` e gli ADR approvati.
 
 ## Obiettivo e modello operativo
 

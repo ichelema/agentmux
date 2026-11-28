@@ -4,7 +4,7 @@
 
 ## Contesto
 
-AgentMux ha bisogno di processi figli di terminale indipendenti, di collegamento locale e remoto e della conservazione dello stato del PTY dopo la disconnessione della UI o di SSH, senza dipendere da tmux/abduco/dtach.
+Ethereal ha bisogno di processi figli di terminale indipendenti, di collegamento locale e remoto e della conservazione dello stato del PTY dopo la disconnessione della UI o di SSH, senza dipendere da tmux/abduco/dtach.
 
 ## Decisione
 
