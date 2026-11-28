@@ -7,7 +7,9 @@
 - **GitHub:** `ichelema/Ethereal`, pubblico. `main` non ha protezione né CI: arrivano con M0-06.
   Fino al 2026-11-28 il repository era `ichelema/agentmux`: GitHub reindirizza il vecchio URL.
 - **Hindsight:** bank `Ethereal`, tag `repo:Ethereal` e `claude-code`. Il bank è un `clone` del
-  bank `agentmux` del 2026-11-28, con i tag cambiati; `agentmux` resta come backup. Il file
+  bank `agentmux` del 2026-11-28, con i tag cambiati. Il bank `agentmux` è cancellato dal
+  2026-11-28, su istruzione dell'utente; il suo export è in
+  `~/.claude/tmp/ethereal-rename/agentmux-bank-export-20261128.json`. Il file
   `hindsight.config.json` nella root (mission, mental model e pagine di conoscenza del bank) è
   tracciato da Git dal 2026-11-23, così vale uguale su ogni macchina.
 - **Claude Code:** `.claude/settings.json` (tracciato) contiene l'hook `SessionStart` e abilita il

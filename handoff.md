@@ -29,8 +29,6 @@ governance è `2.14-draft`.
 
 ## Decisioni che servono all'utente
 
-- Il bank Hindsight `agentmux` resta come backup della copia `Ethereal`. Quando il bank
-  `Ethereal` funziona, l'utente decide se cancellarlo.
 - L'integrazione GitHub di Linear: al merge la issue deve andare in In Review, non in Done.
   Conviene cambiarla prima del prossimo merge (punto 1 di
   [memory/punti-aperti.md](memory/punti-aperti.md)). Dopo la rinomina del repository, la prima
