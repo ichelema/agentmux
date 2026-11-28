@@ -130,9 +130,9 @@ derivano sono in [`CLAUDE.md`](../CLAUDE.md).
 
     Il blocco «Memoria consultata» non va nel piano su Linear, perché il reviewer indipendente
     legge il piano e non deve ricevere fatti di Hindsight (punto 13). §7 di
-    `docs/DEVELOPMENT_WORKFLOW.md` rimanda alla sottosezione. In Trinity `search_pages`,
-    `get_page` e `get_mental_model` sono nell'allowlist MCP dal commit `ed31283`.
-    `get_mental_model` non è nelle istruzioni: restituisce anche il `reflect_response`, circa
-    25.000 caratteri per una pagina di 3.000. Eccezione a §12 di `docs/DEVELOPMENT_WORKFLOW.md`,
-    scelta dell'utente: commit diretto su `main` senza issue, senza PR e senza review.
-    `2.14-draft` indica il testo fino al commit `5b1130c`.
+    `docs/DEVELOPMENT_WORKFLOW.md` rimanda alla sottosezione. In Trinity `search_pages` e
+    `get_page` sono nell'allowlist MCP dal commit `ed31283`. `get_mental_model` ne è uscito con
+    il commit `4f51cfd`: restituisce anche il `reflect_response`, circa 25.000 caratteri per una
+    pagina di 3.000, e le pagine pinned le inietta già l'hook. Eccezione a §12 di
+    `docs/DEVELOPMENT_WORKFLOW.md`, scelta dell'utente: commit diretto su `main` senza issue,
+    senza PR e senza review. `2.14-draft` indica il testo fino al commit `5b1130c`.
