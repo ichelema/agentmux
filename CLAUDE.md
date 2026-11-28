@@ -5,7 +5,7 @@ Linux. Architettura e toolchain sono in `docs/ARCHITECTURE.md`. Il progetto è n
 (`docs/BOOTSTRAP_PLAN.md`): M0 non implementa PTY, `libghostty-vt`, Notcurses o SSH
 (`docs/DEVELOPMENT_WORKFLOW.md` §11).
 
-**Stato:** governance `2.14-draft`, tracciata nel repository, **non** congelata.
+**Stato:** governance `2.15-draft`, tracciata nel repository, **non** congelata.
 
 **Fonti di verità:** Git per il codice e per i documenti del repository (`docs/`, ADR,
 governance); Linear (team `ICH`, progetto Ethereal) per la issue, la spec e il piano approvati, le
@@ -178,9 +178,11 @@ Dopo `issue-cycle` e dopo `4_review-fix-loop` controlla CP05 come al punto 5:
 
 - Leggi l'indice `<repo-root>/memory/memory.md`, poi apri solo i file che servono al lavoro.
 - Se Hindsight è disponibile, fai un `recall` mirato (tag `repo:Ethereal`) per i componenti che
-  tocchi. Se non risponde, prosegui e dillo.
-- Il reviewer indipendente fa eccezione alle due righe sopra: non usa Hindsight e legge la memoria
-  solo nel suo worktree di review (`docs/DEVELOPMENT_WORKFLOW.md` §7).
+  tocchi, alla ripresa e nei momenti di «Quando consultare la memoria». Se non risponde, prosegui
+  e dillo.
+- Il reviewer indipendente fa eccezione alle due righe sopra e a «Quando consultare la memoria»:
+  non usa Hindsight e legge la memoria solo nel suo worktree di review
+  (`docs/DEVELOPMENT_WORKFLOW.md` §7).
 - Controlla ogni fatto della memoria su Git, Linear e `docs/` prima di usarlo.
 - In `memory/` scrivi solo fatti controllati e durevoli, in italiano: decisioni dell'utente con il
   motivo, cause radice e correzioni, fatti d'ambiente, punti aperti, issue chiuse.
@@ -188,6 +190,41 @@ Dopo `issue-cycle` e dopo `4_review-fix-loop` controlla CP05 come al punto 5:
   passo (va in `handoff.md`), segreti o conversazioni.
 - Aggiorna il file del tema e non creare duplicati. Per un tema nuovo crea un file e aggiungi una
   riga all'indice. Quando un fatto cambia, correggi la riga: la storia resta in Git.
+
+### Quando consultare la memoria
+
+- **Memoria consultata**: quando presenti all'utente il piano per CP02, e quando `2_work-issue`
+  mostra il piano prima di implementare, aggiungi un blocco «Memoria consultata» con:
+  - la query del `recall` e i fatti utili trovati, con la data, oppure «nessun fatto utile». Vale
+    anche un `recall` fatto prima nella stessa sessione, se la query copriva la issue;
+  - i file di `memory/` aperti e cosa dicono per la issue: sempre `memory/insidie.md`, e le voci
+    di `memory/decisioni.md` e `memory/punti-aperti.md` che la toccano;
+  - le pagine del bank lette (punto «Pagine»), di solito «Decisions» e «Conventions».
+
+  Il blocco va nel messaggio all'utente, non nel piano su Linear: il reviewer indipendente legge
+  il piano approvato e non deve ricevere fatti di Hindsight (`docs/DEVELOPMENT_WORKFLOW.md` §7).
+  Copia questi fatti nel prompt dei subagenti di implementazione, mai in quello del reviewer.
+- **Prima di una domanda all'utente**: cerca la risposta in `memory/decisioni.md`, nella pagina
+  «Decisions» del bank e con un `recall` sul tema della domanda. Se una decisione registrata
+  risponde già per questo caso, applicala e dillo all'utente in una riga, con la fonte. Non vale
+  per le approvazioni: gate CP01–CP06, perimetro, architettura, sicurezza, permessi e rinvii li
+  decide sempre l'utente (`docs/DEVELOPMENT_WORKFLOW.md` §1). Se la memoria non risponde, o il
+  caso è diverso da quello deciso, chiedi e scrivi nella domanda cosa hai trovato, oppure «niente
+  in memoria».
+- **Fallimento inatteso**: quando un comando, un build o un test falliscono per un motivo che il
+  diff non spiega, prima del primo tentativo di correzione apri `memory/insidie.md` e
+  `memory/punti-aperti.md` e fai un `recall` sul sintomo (comando, messaggio d'errore). Se il
+  problema è già noto, applica la correzione registrata. I limiti dei tentativi di
+  `docs/DEVELOPMENT_WORKFLOW.md` §6 non cambiano.
+- **Pagine**: all'avvio l'hook di Trinity mostra solo «Apprendimenti ricorrenti e criticità». Le
+  pagine di conoscenza del bank («Decisions», «Conventions», «Components», «Feature Work»,
+  «Concepts») si leggono con `mcp__hindsight__search_pages`, con una query sul tema, e poi con
+  `mcp__hindsight__get_page` sull'id trovato. È testo già sintetizzato, senza chiamate LLM: come
+  il `recall`, è un consiglio da controllare sulle fonti di verità.
+- **Reflect** (`mcp__hindsight__reflect`) solo per una modifica di architettura o un ADR
+  (`docs/DEVELOPMENT_WORKFLOW.md` §3), per mettere insieme decisioni, vincoli e approcci scartati
+  prima della spec. Costa una decina di chiamate LLM: per un fatto singolo bastano `recall` e
+  pagine.
 
 ## Chiusura della sessione
 

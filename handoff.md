@@ -9,7 +9,7 @@ Lo slot WIP è libero: su Linear nessuna issue di Ethereal è aperta, e l'ultima
 (ICH-588) ha il commento di chiusura CP06. Il progetto AgentMux ora si chiama Ethereal
 (punto 17 di [memory/decisioni.md](memory/decisioni.md)): repository `ichelema/Ethereal`,
 progetto Linear «Ethereal», bank Hindsight `Ethereal`, cartella `20261120_ethereal`. La
-governance è `2.14-draft`.
+governance è `2.15-draft`.
 
 ## Prossimo passo
 

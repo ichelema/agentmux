@@ -1,6 +1,6 @@
 # Requisiti del prodotto Ethereal — riepilogo
 
-**Stato:** riepilogo di progettazione, parte della baseline di architettura approvata dal proprietario con ICH-588 (M0-03), sotto `governance 2.14-draft`; i criteri di accettazione tecnici devono essere elaborati nelle issue e nelle spec approvate su Linear. Le modifiche seguono `docs/DEVELOPMENT_WORKFLOW.md` §3.
+**Stato:** riepilogo di progettazione, parte della baseline di architettura approvata dal proprietario con ICH-588 (M0-03), sotto `governance 2.15-draft`; i criteri di accettazione tecnici devono essere elaborati nelle issue e nelle spec approvate su Linear. Le modifiche seguono `docs/DEVELOPMENT_WORKFLOW.md` §3.
 
 ## Capacità previste
 

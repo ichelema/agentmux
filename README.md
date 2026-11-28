@@ -1,6 +1,6 @@
 # Ethereal
 
-**Stato:** `governance 2.14-draft`, non congelata. Questo repository **non** è un progetto implementato.
+**Stato:** `governance 2.15-draft`, non congelata. Questo repository **non** è un progetto implementato.
 
 Ethereal è un multiplexer e orchestratore di sessioni di terminale per Linux, a livello di applicazione, per gli agent AI da CLI esistenti, con un daemon PTY persistente e un client Notcurses in C17.
 

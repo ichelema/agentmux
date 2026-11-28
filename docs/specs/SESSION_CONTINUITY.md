@@ -1,6 +1,6 @@
 # Continuità della sessione ed esecuzione ripristinabile dell'agente
 
-**Stato:** parte di `governance 2.14-draft`; specifica operativa esercitata nel pilota ICH-548, non ancora automatizzata. Questo protocollo è obbligatorio per avviare una nuova sessione dell'agente. Un reviewer indipendente segue invece `docs/DEVELOPMENT_WORKFLOW.md` §4: non legge i commenti di checkpoint (punto 4).
+**Stato:** parte di `governance 2.15-draft`; specifica operativa esercitata nel pilota ICH-548, non ancora automatizzata. Questo protocollo è obbligatorio per avviare una nuova sessione dell'agente. Un reviewer indipendente segue invece `docs/DEVELOPMENT_WORKFLOW.md` §4: non legge i commenti di checkpoint (punto 4).
 
 ## Cosa sopravvive tra le sessioni
 
@@ -33,7 +33,7 @@ schema: ethereal.handoff.v1
 issue: ICH-XXX
 checkpoint: CP03
 phase: implementation
-governance_version: 2.14-draft
+governance_version: 2.15-draft
 spec_revision: "<approved-revision-id>"
 plan_revision: "<approved-revision-id>"
 branch: improvments/ICH-XXX-opus

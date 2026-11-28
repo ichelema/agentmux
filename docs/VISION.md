@@ -1,6 +1,6 @@
 # Ethereal — Visione del prodotto
 
-**Stato:** visione del prodotto che fa fede, parte della baseline di architettura approvata dal proprietario con ICH-588 (M0-03), sotto `governance 2.14-draft`. Le modifiche seguono `docs/DEVELOPMENT_WORKFLOW.md` §3.
+**Stato:** visione del prodotto che fa fede, parte della baseline di architettura approvata dal proprietario con ICH-588 (M0-03), sotto `governance 2.15-draft`. Le modifiche seguono `docs/DEVELOPMENT_WORKFLOW.md` §3.
 
 ## Scopo
 

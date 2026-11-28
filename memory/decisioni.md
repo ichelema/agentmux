@@ -114,3 +114,25 @@ derivano sono in [`CLAUDE.md`](../CLAUDE.md).
     `agentctl` restano invariati. Le issue Done conservano titoli e testi storici con il nome
     vecchio, e i loro checkpoint usano il marcatore vecchio. Commit diretto su `main`, su
     istruzione dell'utente; la governance passa a `2.14-draft`.
+18. **2026-11-28 — Quando consultare la memoria; governance `2.15-draft`.** Scelta dell'utente,
+    dopo l'analisi dei transcript. In notcursesruby (69 sessioni dal 2026-11-13) il `recall`
+    c'è in 12 delle 29 sessioni con `2_work-issue`, e 55 domande all'utente su 68 arrivano
+    senza `recall` né letture di `memory/`. In Ethereal (10 sessioni) nessuna delle ultime 3 fa
+    un `recall`. In nessuno dei due progetti `reflect` è mai stato usato. La sezione «Memoria»
+    di `CLAUDE.md` ha ora la sottosezione «Quando consultare la memoria»:
+    - blocco «Memoria consultata» quando si presenta il piano per CP02 e in `2_work-issue`;
+    - `memory/decisioni.md`, pagina «Decisions» e `recall` prima di una domanda all'utente, ma
+      non per le approvazioni;
+    - `memory/insidie.md`, `memory/punti-aperti.md` e `recall` prima del primo tentativo di
+      correzione di un fallimento inatteso;
+    - pagine lette con `search_pages` e `get_page`;
+    - `reflect` solo per modifiche di architettura e ADR.
+
+    Il blocco «Memoria consultata» non va nel piano su Linear, perché il reviewer indipendente
+    legge il piano e non deve ricevere fatti di Hindsight (punto 13). §7 di
+    `docs/DEVELOPMENT_WORKFLOW.md` rimanda alla sottosezione. In Trinity `search_pages`,
+    `get_page` e `get_mental_model` sono nell'allowlist MCP dal commit `ed31283`.
+    `get_mental_model` non è nelle istruzioni: restituisce anche il `reflect_response`, circa
+    25.000 caratteri per una pagina di 3.000. Eccezione a §12 di `docs/DEVELOPMENT_WORKFLOW.md`,
+    scelta dell'utente: commit diretto su `main` senza issue, senza PR e senza review.
+    `2.14-draft` indica il testo fino al commit `5b1130c`.
